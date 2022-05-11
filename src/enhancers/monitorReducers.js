@@ -1,3 +1,6 @@
+// From Redux documentation
+// https://redux.js.org/usage/configuring-your-store/#middlewareloggerjs
+
 const round = number => Math.round(number * 100) / 100
 
 const monitorReducerEnhancer =

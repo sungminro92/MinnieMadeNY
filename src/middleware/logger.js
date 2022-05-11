@@ -1,3 +1,6 @@
+// From Redux documentation
+// https://redux.js.org/usage/configuring-your-store/#middlewareloggerjs
+
 const logger = store => next => action => {
     console.group(action.type)
     console.info('dispatching', action)

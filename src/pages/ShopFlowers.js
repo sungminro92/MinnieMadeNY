@@ -1,6 +1,4 @@
 
-import React from 'react'
-
 const ShopFlowers = () => {
     return (
         <div>

@@ -1,6 +1,4 @@
 
-import React from 'react'
-
 const ShopWallDecors = () => {
     return (
         <div>
