@@ -1,6 +1,15 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
+  width: 1440px;
+  font-family: 'Open Sans', sans-serif;
 }
+
 
 .App-logo {
   height: 40vmin;
@@ -36,4 +45,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.cursor-pointer {
+  cursor: pointer
+}
+
+li {
+  list-style: none;
 }

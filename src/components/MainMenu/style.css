@@ -1,0 +1,29 @@
+#main-menu {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2)
+}
+
+#menu-container {
+    /* position: absolute;
+    top: 0;
+    left: 0;
+    width: 320px;
+    height: 100vh;
+    
+    transition: margin 0.5s;
+    margin: 0 0 0 -320px; */
+    position: fixed;
+    background-color: white;
+    left: 0;
+    top: 0;
+    transform: translate3d(-320px, 0, 0);
+    width: 320px;
+    height: 100vh;
+    transition: transform .3s cubic-bezier(0, .52, 0, 1);
+}
+
+#menu-container.show {
+    transform: translate3d(0vw, 0, 0)
+}

@@ -1,6 +1,8 @@
-import Footer from './Footer'
-import Header from './Header'
-const Layout = (props) => {
+import Footer from '../Footer'
+import Header from '../MainMenu'
+import './style.css'
+
+const productsLayout = (props) => {
     return (
         <div>
             <Header />
@@ -12,4 +14,4 @@ const Layout = (props) => {
     )
 }
 
-export default Layout
+export default productsLayout

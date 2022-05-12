@@ -1,9 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-//IMPORT CREATESTORE
+import { useState, useContext, useEffect } from 'react'
+
 import { Provider } from "react-redux";
 import AuthProvider from "./context/auth";
-import configureStore from './configureStore'
+import configureStore from './redux/configureStore'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 import ShopFlowers from './pages/ShopFlowers'
@@ -14,9 +15,16 @@ import ProductInfo from './pages/ProductInfo'
 import RegisterPage from './pages/RegisterPage'
 import CartPage from './pages/CartPage'
 import Navigation from './components/Navigation'
+import MainMenu from './components/MainMenu'
 const store = configureStore()
 
 function App() {
+  const [showMenu, setShowMenu] = useState(false);
+
+  const handleShowMenu = () => {
+    setShowMenu(!showMenu)
+  }
+
   return (
     // <AuthProvider>
     <Router>
@@ -28,7 +36,9 @@ function App() {
         </h1>
       </div> */}
         <div>
-          <Navigation />
+          {/* {showMenu ? <MainMenu handleShowMenu={handleShowMenu} /> : null} */}
+          <MainMenu handleShowMenu={handleShowMenu} show={showMenu} />
+          <Navigation handleShowMenu={handleShowMenu} />
           <Switch>
             <Route path="/wire-flowers" component={ShopFlowers} />
             <Route path="/wire-wall-decors" component={ShopWallDecors} />

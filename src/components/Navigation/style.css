@@ -1,0 +1,43 @@
+.logotype {
+    font-family: 'DM Serif Text', serif;
+    /* font-family: 'Vidaloka', serif; */
+    font-size: 30px;
+}
+
+.max-width {
+    width: 100%;
+    height: auto;
+    max-width: 1400px;
+    min-width: 380px;
+}
+
+.nav-container {
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+}
+
+.sub-nav-conatiner {
+    justify-content: center;
+}
+
+.sub-nav-conatiner a {
+    padding: 0px 15px;
+    text-decoration: none;
+    color: black;
+}
+
+.flex-container {
+    display: flex;
+
+}
+
+.react-icons {
+    vertical-align: middle
+}
+
+.menu-icon {
+    cursor: pointer;
+}
