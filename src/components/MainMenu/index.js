@@ -2,12 +2,14 @@ import { Link } from 'react-router-dom'
 import { GrClose } from 'react-icons/gr'
 import './style.css'
 
-const MainMenu = ({ handleShowMenu, show }) => {
+const MainMenu = ({ dispatch, show }) => {
     return (
-        <div id={show ? "main-menu" : ""} onClick={() => handleShowMenu()}>
+        <>
+            <div id={show ? "main-menu" : ""} onClick={() => dispatch({ type: "MAIN" })} >
+            </div >
             <div id="menu-container" className={show ? "show" : ""}>
-                <div className="cursor-pointer" onClick={() => handleShowMenu()}>
-                    <GrClose size={30} />
+                <div className="cursor-pointer" onClick={() => dispatch({ type: "MAIN" })}>
+                    <GrClose size={28} />
                 </div>
                 <div>
                     <ul>
@@ -19,7 +21,7 @@ const MainMenu = ({ handleShowMenu, show }) => {
                     </ul>
                 </div>
             </div >
-        </div>
+        </>
     )
 }
 

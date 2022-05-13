@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth"
 import { setDoc, doc, Timestamp } from "firebase/firestore";
 import { useHistory } from 'react-router-dom'
 // import db from "../fireConfig";
-import { auth, db, provider } from "../fireConfig";
+import { auth, db, provider } from "../../fireConfig";
 import { collection, addDoc } from "firebase/firestore";
 
 const RegisterPage = (props) => {

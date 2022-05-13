@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState, useContext, useEffect } from 'react'
+import { useState, useReducer, useEffect } from 'react'
 
 import { Provider } from "react-redux";
 import AuthProvider from "./context/auth";
@@ -12,18 +12,75 @@ import ShopWallDecors from './pages/ShopWallDecors'
 import ShopArts from './pages/ShopArts'
 import HomePage from './pages/HomePage'
 import ProductInfo from './pages/ProductInfo'
-import RegisterPage from './pages/RegisterPage'
+import Register from './components/Users/Register'
 import CartPage from './pages/CartPage'
 import Navigation from './components/Navigation'
 import MainMenu from './components/MainMenu'
 const store = configureStore()
 
-function App() {
-  const [showMenu, setShowMenu] = useState(false);
+const initialState = {
+  main: false,
+  user: false,
+  cart: false
+}
 
-  const handleShowMenu = () => {
-    setShowMenu(!showMenu)
+function showMenuReducer(state, action) {
+  switch (action.type) {
+    case "MAIN":
+      console.log(state.main);
+      return {
+        ...state,
+        main: !state.main
+      }
+    case "USER":
+      return {
+        ...state,
+        user: !state.user
+      }
+    case "CART":
+      return {
+        ...state,
+        cart: !state.cart
+      }
+    default:
+
   }
+}
+
+
+function App() {
+  // const [show, setShow] = useState({
+  //   main: false,
+  //   user: false,
+  //   cart: false,
+  // });
+  // const [showUser, setShowUser] = useState(false);
+  const [state, dispatch] = useReducer(showMenuReducer, initialState);
+
+  // const handleShowMenu = (value) => {
+  //   console.log(value);
+  //   switch (value) {
+  //     case "MAIN":
+  //       console.log(show);
+  //       setShow({
+  //         ...show,
+  //         main: !show.main
+  //       })
+  //     case "USER":
+  //       setShow({
+  //         ...show,
+  //         user: !show.user
+  //       })
+  //     case "CART":
+  //       setShow({
+  //         ...show,
+  //         cart: !show.cart
+  //       })
+  //     default:
+
+  //   }
+  // setShowMenu(!showMenu)
+  // }
 
   return (
     // <AuthProvider>
@@ -37,15 +94,15 @@ function App() {
       </div> */}
         <div>
           {/* {showMenu ? <MainMenu handleShowMenu={handleShowMenu} /> : null} */}
-          <MainMenu handleShowMenu={handleShowMenu} show={showMenu} />
-          <Navigation handleShowMenu={handleShowMenu} />
+          <MainMenu dispatch={dispatch} show={state.main} />
+          <Navigation dispatch={dispatch} />
           <Switch>
             <Route path="/wire-flowers" component={ShopFlowers} />
             <Route path="/wire-wall-decors" component={ShopWallDecors} />
             <Route path="/wire-arts-accessories" component={ShopArts} />
             <Route path="/product-details" component={ProductInfo} />
             <Route path="/cart" component={CartPage} />
-            <Route path="/register" component={RegisterPage} />
+            <Route path="/register" component={Register} />
             <Route exact path="/" component={HomePage} />
           </Switch >
         </div >
