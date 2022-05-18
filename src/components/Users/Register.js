@@ -10,7 +10,6 @@ import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import { FcGoogle } from 'react-icons/fc'
 
-
 const Register = ({ handleClick }) => {
     const [userData, setUserData] = useState({
         firstName: "",
@@ -31,59 +30,6 @@ const Register = ({ handleClick }) => {
         setUserData({ ...userData, [e.target.name]: e.target.value });
     };
 
-    // const handleValidation = () => {
-    //     let fields = userData;
-    //     let errors = {};
-    //     let formIsValid = true;
-
-    //     // NAME
-    //     if (!fields["firstName"]) {
-    //         formIsValid = false;
-    //         errors["firstName"] = "cannot be empty"
-    //     }
-    //     if (typeof fields["firstName"] !== "undefined") {
-    //         if (!fields["firstName"].match(/^[a-zA-Z]+$/)) {
-    //             formIsValid = false;
-    //             errors["firstName"] = "Only letters";
-    //         }
-    //     }
-    //     if (!fields["lastName"]) {
-    //         formIsValid = false;
-    //         errors["lastName"] = "cannot be empty"
-    //     }
-    //     if (typeof fields["lastName"] !== "undefined") {
-    //         if (!fields["lastName"].match(/^[a-zA-Z]+$/)) {
-    //             formIsValid = false;
-    //             errors["lastName"] = "Only letters";
-    //         }
-    //     }
-    //     // Email
-    //     if (typeof fields["email"] !== "undefined") {
-    //         let lastAtPos = fields["email"].lastIndexOf("@");
-    //         let lastDotPos = fields["email"].lastIndexOf(".");
-    //         if (
-    //             !(
-    //                 lastAtPos < lastDotPos &&
-    //                 lastAtPos > 0 &&
-    //                 fields["email"].indexOf("@@") == -1 &&
-    //                 lastDotPos > 2 &&
-    //                 fields["email"].length - lastDotPos > 2
-    //             )
-    //         ) {
-    //             formIsValid = false;
-    //             errors["email"] = "Email is not valid";
-    //         }
-    //     }
-
-    //     setErrors({
-    //         errors: errors
-    //     })
-
-    //     return formIsValid;
-    // }
-
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setUserData({ ...userData, error: null, loading: true });
@@ -95,9 +41,9 @@ const Register = ({ handleClick }) => {
                 auth,
                 email,
                 password
-            );
-            console.log(result.user);
+            )
 
+            console.log(result.user);
 
             await setDoc(doc(db, "users", result.user.uid), {
                 uid: result.user.uid,
@@ -119,7 +65,6 @@ const Register = ({ handleClick }) => {
             setErrors = {}
             // redirect to "/" => Home
             history.replace("/");
-
         } catch (err) {
 
             switch (err.code) {
@@ -128,7 +73,7 @@ const Register = ({ handleClick }) => {
                     setUserData({ ...userData, error: "email is already in use", loading: false });
                     break;
                 default:
-                    return
+                    setUserData({ ...userData, error: error.message, loading: false })
             }
 
             setErrors()
@@ -157,12 +102,10 @@ const Register = ({ handleClick }) => {
 
     return (
         <section>
-            <form className="form" onSubmit={handleSubmit}>
+            <form className="form">
                 <h1>Sign up</h1>
                 <div className="button-container social-button-container">
                     <Button sx={{ m: 0.5 }} variant="outlined" size="small" fullWidth><span className="social-icon"><FcGoogle size={20} /></span><p>Continue with Google</p></Button>
-                    {/* <hr style="width: 100% color:gray" /> */}
-                    {/* <hr style="height:2px;border-width:0;color:gray;background-color:gray"></hr> */}
                 </div>
                 <hr
                     style={{
@@ -214,7 +157,7 @@ const Register = ({ handleClick }) => {
                 <div className="button-container">
                     {error ? <p className="error">{error}</p> : null}
 
-                    <Button sx={{ m: 0.5 }} variant="contained" fullWidth> Register </Button>
+                    <Button sx={{ m: 0.5 }} variant="contained" fullWidth onClick={handleSubmit}> Register </Button>
                     {/* <button className="submit-button" disabled={loading} >
                         {loading ? "Creating..." : "Register"}
                     </button> */}
@@ -228,3 +171,55 @@ const Register = ({ handleClick }) => {
 }
 
 export default Register
+
+
+    // const handleValidation = () => {
+    //     let fields = userData;
+    //     let errors = {};
+    //     let formIsValid = true;
+
+    //     // NAME
+    //     if (!fields["firstName"]) {
+    //         formIsValid = false;
+    //         errors["firstName"] = "cannot be empty"
+    //     }
+    //     if (typeof fields["firstName"] !== "undefined") {
+    //         if (!fields["firstName"].match(/^[a-zA-Z]+$/)) {
+    //             formIsValid = false;
+    //             errors["firstName"] = "Only letters";
+    //         }
+    //     }
+    //     if (!fields["lastName"]) {
+    //         formIsValid = false;
+    //         errors["lastName"] = "cannot be empty"
+    //     }
+    //     if (typeof fields["lastName"] !== "undefined") {
+    //         if (!fields["lastName"].match(/^[a-zA-Z]+$/)) {
+    //             formIsValid = false;
+    //             errors["lastName"] = "Only letters";
+    //         }
+    //     }
+    //     // Email
+    //     if (typeof fields["email"] !== "undefined") {
+    //         let lastAtPos = fields["email"].lastIndexOf("@");
+    //         let lastDotPos = fields["email"].lastIndexOf(".");
+    //         if (
+    //             !(
+    //                 lastAtPos < lastDotPos &&
+    //                 lastAtPos > 0 &&
+    //                 fields["email"].indexOf("@@") == -1 &&
+    //                 lastDotPos > 2 &&
+    //                 fields["email"].length - lastDotPos > 2
+    //             )
+    //         ) {
+    //             formIsValid = false;
+    //             errors["email"] = "Email is not valid";
+    //         }
+    //     }
+
+    //     setErrors({
+    //         errors: errors
+    //     })
+
+    //     return formIsValid;
+    // }

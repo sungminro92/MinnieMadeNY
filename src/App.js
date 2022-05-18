@@ -13,16 +13,16 @@ import ShopArts from './pages/ShopArts'
 import HomePage from './pages/HomePage'
 import ProductInfo from './pages/ProductInfo'
 import Register from './components/Users/Register'
-// import CartPage from './components/Users/CartPage'
+import CartPage from './components/Users/CartPage'
 import Navigation from './components/Navigation'
 import MainMenu from './components/MainMenu'
-import Users from './components/Users/Users'
+import UserPage from './components/Users/UserPage'
 const store = configureStore()
 
 const initialState = {
   main: false,
   user: false,
-  cart: "CART",
+  cart: false,
 }
 
 function showMenuReducer(state, action) {
@@ -39,9 +39,18 @@ function showMenuReducer(state, action) {
         user: !state.user
       }
     case "CART":
-      return state
+      return {
+        ...state,
+        cart: !state.cart
+      }
+    case "SWITCH":
+      return {
+        ...state,
+        cart: !state.cart,
+        user: !state.user
+      }
     default:
-
+      return state;
   }
 }
 
@@ -81,33 +90,34 @@ function App() {
   // }
 
   return (
-    // <AuthProvider>
-    <Router>
-      <Provider store={store}>
-        {/* <div className="App container mx-auto bg-gray-200 ">
+    <AuthProvider>
+      <Router>
+        <Provider store={store}>
+          {/* <div className="App container mx-auto bg-gray-200 ">
         <h1>MinnieMadeNY website</h1>
         <h1 className="text-3xl font-bold underline">
           Hello world!
         </h1>
       </div> */}
-        <div>
-          {/* {showMenu ? <MainMenu handleShowMenu={handleShowMenu} /> : null} */}
-          <MainMenu dispatch={dispatch} show={state.main} />
-          <Users dispatch={dispatch} show={state.user} />
-          <Navigation dispatch={dispatch} />
-          <Switch>
-            <Route path="/wire-flowers" component={ShopFlowers} />
-            <Route path="/wire-wall-decors" component={ShopWallDecors} />
-            <Route path="/wire-arts-accessories" component={ShopArts} />
-            <Route path="/product-details" component={ProductInfo} />
-            {/* <Route path="/cart" component={CartPage} /> */}
-            {/* <Route path="/register" component={Register} /> */}
-            <Route exact path="/" component={HomePage} />
-          </Switch >
-        </div >
-      </Provider >
-    </Router>
-    // </AuthProvider >
+          <div>
+            {/* {showMenu ? <MainMenu handleShowMenu={handleShowMenu} /> : null} */}
+            <MainMenu dispatch={dispatch} show={state.main} />
+            <UserPage dispatch={dispatch} show={state.user} />
+            <CartPage dispatch={dispatch} show={state.cart} />
+            <Navigation dispatch={dispatch} />
+            <Switch>
+              <Route path="/wire-flowers" component={ShopFlowers} />
+              <Route path="/wire-wall-decors" component={ShopWallDecors} />
+              <Route path="/wire-arts-accessories" component={ShopArts} />
+              <Route path="/product-details" component={ProductInfo} />
+              {/* <Route path="/cart" component={CartPage} /> */}
+              {/* <Route path="/register" component={Register} /> */}
+              <Route exact path="/" component={HomePage} />
+            </Switch >
+          </div >
+        </Provider >
+      </Router>
+    </AuthProvider >
   )
 
 }

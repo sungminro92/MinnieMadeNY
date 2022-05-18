@@ -24,6 +24,18 @@
     transition: transform .3s cubic-bezier(0, .52, 0, 1);
 }
 
+#user-container .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 96%;
+    margin: 0 auto;
+}
+
+#user-container .close-button {
+    width: 30px;
+}
+
 #user-container.show {
     transform: translate3d(0vw, 0, 0)
 }
