@@ -2,16 +2,17 @@ import Footer from '../Footer'
 import Header from '../MainMenu'
 import './style.css'
 
-const productsLayout = (props) => {
+const ProductLayout = ({ flower }) => {
     return (
         <div>
             <Header />
             <div className="contents">
-                {props.children}
+                {flower.title}
+                {flower.description}
+                {flower.price}
             </div>
-            <Footer />
         </div>
     )
 }
 
-export default productsLayout
+export default ProductLayout

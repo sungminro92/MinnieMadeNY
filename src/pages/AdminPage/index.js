@@ -2,7 +2,9 @@ import './style.css'
 
 const AdminPage = () => {
     return (
-        <div>THIS IS ADMIN PAGE</div>
+        <div>
+            <h1>THIS IS ADMIN PAGE</h1>
+        </div>
     )
 }
 
