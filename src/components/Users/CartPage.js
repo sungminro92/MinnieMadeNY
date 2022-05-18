@@ -1,10 +1,19 @@
-
+import { useState } from 'react'
 import { GrClose } from 'react-icons/gr'
 import Cart from './Cart'
 import './style.css'
 
 const CartPage = ({ dispatch, show }) => {
-
+    const [items, setItems] = useState([{
+        title: "something",
+        description: "this is description",
+        price: 15,
+    },
+    {
+        title: "this is something",
+        description: "something description",
+        price: 10,
+    }])
     return (
         <>
             <div id={show ? "main-user" : ""} onClick={() => dispatch({ type: "CART" })} ></div>

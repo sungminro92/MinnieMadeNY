@@ -13,6 +13,7 @@ import ShopArts from './pages/ShopArts'
 import HomePage from './pages/HomePage'
 import ProductInfo from './pages/ProductInfo'
 import Register from './components/Users/Register'
+import AdminPage from './pages/AdminPage'
 import CartPage from './components/Users/CartPage'
 import Navigation from './components/Navigation'
 import MainMenu from './components/MainMenu'
@@ -110,6 +111,7 @@ function App() {
               <Route path="/wire-wall-decors" component={ShopWallDecors} />
               <Route path="/wire-arts-accessories" component={ShopArts} />
               <Route path="/product-details" component={ProductInfo} />
+              <Route path="/admin" component={AdminPage} />
               {/* <Route path="/cart" component={CartPage} /> */}
               {/* <Route path="/register" component={Register} /> */}
               <Route exact path="/" component={HomePage} />

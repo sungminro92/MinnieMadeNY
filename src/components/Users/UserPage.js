@@ -47,8 +47,6 @@ const Users = ({ dispatch, show }) => {
                     < div onClick={() => dispatch({ type: "SWITCH" })}><BiCart size={30} /></div>
                 </div>
                 <div>
-                    {/* {login ? <Login dispatch={dispatch} handleClick={handleClick} /> : <Register dispatch={dispatch} handleClick={handleClick} />} */}
-
                     {showContent()}
                 </div>
             </div >

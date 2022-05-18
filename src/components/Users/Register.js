@@ -8,6 +8,7 @@ import { collection, addDoc } from "firebase/firestore";
 
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
+import FullButton from '../Shared/FullButton'
 import { FcGoogle } from 'react-icons/fc'
 
 const Register = ({ handleClick }) => {
@@ -156,15 +157,18 @@ const Register = ({ handleClick }) => {
                 </div>
                 <div className="button-container">
                     {error ? <p className="error">{error}</p> : null}
-
-                    <Button sx={{ m: 0.5 }} variant="contained" fullWidth onClick={handleSubmit}> Register </Button>
+                    <FullButton onClick={handleSubmit} value={"Register"}></FullButton>
+                    {/* <Button sx={{ m: 0.5 }} variant="contained" fullWidth onClick={handleSubmit}> Register </Button> */}
                     {/* <button className="submit-button" disabled={loading} >
                         {loading ? "Creating..." : "Register"}
                     </button> */}
 
                 </div>
                 <p style={{ margin: "1.5rem 0.5rem 0.5rem 0.5rem" }}> Already a member? Sign in instead.</p>
-                <div className="button-container" onClick={() => handleClick("LOGIN")}><Button sx={{ m: 0.5 }} variant="outlined" fullWidth> Sign in </Button></div>
+                <div className="button-container" onClick={() => handleClick("LOGIN")}>
+                    <FullButton value={"Signin"} />
+                    {/* <Button sx={{ m: 0.5 }} variant="outlined" fullWidth> Sign in </Button> */}
+                </div>
             </form>
         </section>
     )

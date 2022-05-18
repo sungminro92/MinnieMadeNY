@@ -5,6 +5,8 @@ import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
+import FullButton from '../Shared/FullButton'
+import ErrorMessage from '../Shared/ErrorMessage'
 import { FcGoogle } from 'react-icons/fc'
 
 
@@ -42,10 +44,9 @@ const LoginPage = ({ handleClick, dispatch }) => {
             });
             history.replace("/");
             dispatch("USER")
-
-
         } catch (err) {
-            setData({ ...data, error: error.message, loading: false })
+            console.log(err.message)
+            setData({ ...data, error: err.code, loading: false })
         }
     }
 
@@ -72,13 +73,20 @@ const LoginPage = ({ handleClick, dispatch }) => {
                 <div className="input-container">
                     <TextField sx={{ m: 0.5 }} type="password" name="password" value={password} onChange={handleChange} id="outlined-basic" label="Password" variant="outlined" size="small" fullWidth required />
                 </div>
+                {error ? <ErrorMessage code={error} /> : null}
                 <div className="button-container">
-                    <Button onClick={handleSubmit} sx={{ m: 0.5 }} variant="contained" fullWidth> {loading ? "Logging in ..." : "Login"} </Button>
+                    <FullButton value={loading ? "Logging in ..." : "Login"} onClick={handleSubmit} />
                 </div>
                 <p style={{ margin: "1.5rem 0.5rem 0.5rem 0.5rem" }}> Not a member yet? Sign up instead</p>
-                <div className="button-container" onClick={() => handleClick("SIGNUP")}><Button sx={{ m: 0.5 }} variant="outlined" fullWidth> Sign up </Button></div>
+
+                <div className="button-container" onClick={() => handleClick("SIGNUP")}>
+
+                    <FullButton value={"Signup"}> </FullButton>
+                    {/* <Button sx={{ m: 0.5 }} variant="outlined" fullWidth> Sign up </Button> */}
+
+                </div>
             </form>
-        </section>
+        </section >
     )
 }
 
