@@ -6,7 +6,12 @@ import { useHistory } from 'react-router-dom'
 import { auth, db, provider } from "../../fireConfig";
 import { collection, addDoc } from "firebase/firestore";
 
-const RegisterPage = (props) => {
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+import { FcGoogle } from 'react-icons/fc'
+
+
+const Register = ({ handleClick }) => {
     const [userData, setUserData] = useState({
         firstName: "",
         lastName: "",
@@ -153,50 +158,73 @@ const RegisterPage = (props) => {
     return (
         <section>
             <form className="form" onSubmit={handleSubmit}>
-                <h1>Register Page - Create an account</h1>
+                <h1>Sign up</h1>
+                <div className="button-container social-button-container">
+                    <Button sx={{ m: 0.5 }} variant="outlined" size="small" fullWidth><span className="social-icon"><FcGoogle size={20} /></span><p>Continue with Google</p></Button>
+                    {/* <hr style="width: 100% color:gray" /> */}
+                    {/* <hr style="height:2px;border-width:0;color:gray;background-color:gray"></hr> */}
+                </div>
+                <hr
+                    style={{
+                        width: "90%",
+                        height: "0px",
+                        backgroundColor: "#eeeeee0"
+                    }}
+                />
+                {/* <Button sx={{ m: 0.5 }} variant="outlined" fullWidth> Sign in with  </Button> */}
                 <div className="input-container">
-                    <label>First Name:</label>
-                    <input
+                    {/* <label>First Name:</label> */}
+                    <TextField sx={{ m: 0.5 }} type="text" name="firstName" value={firstName} onChange={handleChange} id="outlined-basic" label="First Name" variant="outlined" size="small" fullWidth required />
+                    {/* <input
                         type="text"
                         name="firstName"
                         value={firstName}
                         onChange={handleChange}
-                    />
-                    <label>Last Name:</label>
-                    <input
+                    /> */}
+                    {/* <label>Last Name:</label> */}
+                    <TextField sx={{ m: 0.5 }} type="text" name="lastName" value={lastName} onChange={handleChange} id="outlined-basic" label="Last Name" variant="outlined" size="small" fullWidth required />
+                    {/* <input
                         type="text"
                         name="lastName"
                         value={lastName}
                         onChange={handleChange}
-                    />
+                    /> */}
                 </div>
+
                 <div className="input-container">
-                    <label>Email:</label>
-                    <input
+                    {/* <label>Email:</label> */}
+                    <TextField sx={{ m: 0.5 }} type="email" name="email" value={email} onChange={handleChange} id="outlined-basic" label="Email" variant="outlined" size="small" fullWidth required />
+                    {/* <input
                         type="email"
                         name="email"
                         value={email}
                         onChange={handleChange}
-                    />
+                    /> */}
                 </div>
                 <div className="input-container">
-                    <label>Password</label>
+                    <TextField sx={{ m: 0.5 }} type="password" name="password" value={password} onChange={handleChange} id="outlined-basic" label="Password" variant="outlined" size="small" fullWidth required />
+                    {/* <label>Password</label>
                     <input
                         type="password"
                         name="password"
                         value={password}
                         onChange={handleChange}
-                    />
+                    /> */}
                 </div>
                 <div className="button-container">
                     {error ? <p className="error">{error}</p> : null}
-                    <button className="submit-button" disabled={loading} >
+
+                    <Button sx={{ m: 0.5 }} variant="contained" fullWidth> Register </Button>
+                    {/* <button className="submit-button" disabled={loading} >
                         {loading ? "Creating..." : "Register"}
-                    </button>
+                    </button> */}
+
                 </div>
+                <p style={{ margin: "1.5rem 0.5rem 0.5rem 0.5rem" }}> Already a member? Sign in instead.</p>
+                <div className="button-container" onClick={() => handleClick("LOGIN")}><Button sx={{ m: 0.5 }} variant="outlined" fullWidth> Sign in </Button></div>
             </form>
         </section>
     )
 }
 
-export default RegisterPage;
+export default Register

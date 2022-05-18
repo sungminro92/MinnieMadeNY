@@ -10,17 +10,17 @@ const Navigation = ({ dispatch }) => {
         <div className="navigation-page">
             <nav className="max-width flex-container">
                 <IconContext.Provider value={{ color: "black", className: "react-icons" }}>
-                    <div className="menu-icon nav-container flex-container" onClick={() => dispatch({ type: "MAIN" })}>
-                        <a><BiMenu size={30} /></a>
-                        <a><BiSearch size={30} /></a>
+                    <div className="menu-icon nav-container flex-container" >
+                        <a onClick={() => dispatch({ type: "MAIN" })}><BiMenu size={30} /></a>
+                        {/* <a ><BiSearch size={30} /></a> */}
                     </div>
                     <div>
                         <p className="logotype">MinnieMadeNY</p>
                     </div>
 
                     <div className="nav-container flex-container">
-                        <a><BiUserCircle size={30} /></a>
-                        <a><BiCart size={30} /></a>
+                        <a onClick={() => dispatch({ type: "USER" })}><BiUserCircle size={30} /></a>
+                        <a onClick={() => dispatch({ type: "CART" })}><BiCart size={30} /></a>
                     </div>
                 </IconContext.Provider>
             </nav>

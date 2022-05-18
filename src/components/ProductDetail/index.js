@@ -6,7 +6,7 @@ const ProductDetail = (props) => {
         <div>
             <Header />
             <div className="contents">
-                {props.children}
+                {/* {props.children} */}
             </div>
             <Footer />
         </div>
