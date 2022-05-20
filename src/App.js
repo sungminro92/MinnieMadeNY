@@ -100,24 +100,24 @@ function App() {
           Hello world!
         </h1>
       </div> */}
-          <div>
-            {/* {showMenu ? <MainMenu handleShowMenu={handleShowMenu} /> : null} */}
-            <MainMenu dispatch={dispatch} show={state.main} />
-            <UserPage dispatch={dispatch} show={state.user} />
-            <CartPage dispatch={dispatch} show={state.cart} />
-            <Navigation dispatch={dispatch} />
-            <Switch>
-              <Route path="/wire-flowers" component={ShopFlowers} />
-              <Route path="/wire-wall-decors" component={ShopWallDecors} />
-              <Route path="/wire-arts-accessories" component={ShopArts} />
-              <Route path="/product-details" component={ProductInfo} />
-              <Route path="/admin" component={AdminPage} />
-              {/* <Route path="/cart" component={CartPage} /> */}
-              {/* <Route path="/register" component={Register} /> */}
-              <Route exact path="/" component={HomePage} />
-            </Switch >
-          </div >
-        </Provider >
+
+          {/* {showMenu ? <MainMenu handleShowMenu={handleShowMenu} /> : null} */}
+          <MainMenu dispatch={dispatch} show={state.main} />
+          <UserPage dispatch={dispatch} show={state.user} />
+          <CartPage dispatch={dispatch} show={state.cart} />
+          <Navigation dispatch={dispatch} />
+          <Switch>
+            <Route path="/wire-flowers" component={ShopFlowers} />
+            <Route path="/wire-wall-decors" component={ShopWallDecors} />
+            <Route path="/wire-arts-accessories" component={ShopArts} />
+            <Route path="/product-details" component={ProductInfo} />
+            <Route path="/admin" component={AdminPage} />
+            {/* <Route path="/cart" component={CartPage} /> */}
+            {/* <Route path="/register" component={Register} /> */}
+            <Route exact path="/" component={HomePage} />
+          </Switch >
+
+        </Provider>
       </Router>
     </AuthProvider >
   )

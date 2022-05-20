@@ -2,8 +2,11 @@ import { useState } from 'react'
 import { GrClose } from 'react-icons/gr'
 import Cart from './Cart'
 import './style.css'
+import { useSelector } from 'react-redux'
 
 const CartPage = ({ dispatch, show }) => {
+    const { cartItems } = useSelector(state => state.cartReducer)
+
     const [items, setItems] = useState([{
         title: "something",
         description: "this is description",
@@ -23,7 +26,7 @@ const CartPage = ({ dispatch, show }) => {
                         <GrClose size={28} />
                     </div>
                     <div><h3>Your bag</h3></div>
-                    <div>items</div>
+                    <div>{cartItems.length} {cartItems.length > 1 ? "items" : "item"}</div>
                 </div>
                 <div>
                     <Cart />

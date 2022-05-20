@@ -3,7 +3,6 @@ import { cartReducer } from "./cartReducer";
 
 const rootReducer = combineReducers({
     cartReducer: cartReducer,
-
 })
 
 export default rootReducer

@@ -1,5 +1,8 @@
 .navigation-page {
     text-align: center;
+    margin: 0;
+    width: 100%;
+    padding: 0;
     display: center;
 }
 
@@ -7,7 +10,6 @@
     /* font-weight: bold; */
     border-bottom: 1px solid black;
 }
-
 
 .logotype {
     font-family: 'DM Serif Text', serif;
@@ -39,7 +41,7 @@ nav {
 }
 
 .sub-nav-conatiner {
-    padding: 1rem;
+    padding: 1rem 0px;
     width: 100vw;
     text-align: center;
     border-bottom: 1px solid black;

@@ -21,18 +21,18 @@ const ShopFlowers = () => {
         // setProducts
     }, [])
 
-    console.log("state", flowers)
-    let displayFlowers;
-    if (flowers) {
-        displayFlowers = flowers.map((flower) => {
-            return <ProductLayout flower={flower} />
-        })
-    }
+    // console.log("state", flowers)
+    // let displayFlowers;
+    // if (flowers) {
+    //     displayFlowers = flowers.map((flower, index) => {
+    //         return <ProductLayout key={index} flower={flower} />
+    //     })
+    // }
 
     return (
         <div>
             <h1>Shop Wire Flowers</h1>
-            <div>{displayFlowers}</div>
+            <ProductLayout products={flowers} />
         </div>
     )
 }

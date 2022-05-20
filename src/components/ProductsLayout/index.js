@@ -1,15 +1,18 @@
 import Footer from '../Footer'
 import Header from '../MainMenu'
+import ProductCard from '../ProductCard'
 import './style.css'
 
-const ProductLayout = ({ flower }) => {
+const ProductLayout = ({ products }) => {
+
+    const displayProducts = products.map((product, index) => {
+        return <ProductCard product={product} key={index} />
+    })
     return (
         <div>
             <Header />
-            <div className="contents">
-                {flower.title}
-                {flower.description}
-                {flower.price}
+            <div className="products-container">
+                {displayProducts}
             </div>
         </div>
     )
