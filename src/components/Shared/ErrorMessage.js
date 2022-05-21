@@ -1,22 +1,22 @@
 import { useState, useReduceer, useEffect } from 'react'
 import './style.css'
 
-const ErrorMessage = (props) => {
+const ErrorMessage = ({ error }) => {
 
-    const [error, setError] = useState("");
+    const [err, setErr] = useState("");
 
     useEffect(() => {
-        if (props.code.contains("auth/user-not-found")) {
-            setError("No user is found")
+        if (error.message.contains("auth/user-not-found")) {
+            setErr("No user is found")
         } else {
-            setError("there is an error")
+            setErr("there is an error")
         }
 
-    }, [props.code])
+    }, [error])
 
 
     return (
-        <p className="error">{error}</p>
+        <p className="error">{err}</p>
     )
 }
 

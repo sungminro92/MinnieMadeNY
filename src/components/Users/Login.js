@@ -46,7 +46,7 @@ const LoginPage = ({ handleClick, dispatch }) => {
             dispatch("USER")
         } catch (err) {
             console.log(err.message)
-            setData({ ...data, error: err.code, loading: false })
+            setData({ ...data, error: err, loading: false })
         }
     }
 
@@ -73,7 +73,7 @@ const LoginPage = ({ handleClick, dispatch }) => {
                 <div className="input-container">
                     <TextField sx={{ m: 0.5 }} type="password" name="password" value={password} onChange={handleChange} id="outlined-basic" label="Password" variant="outlined" size="small" fullWidth required />
                 </div>
-                {error ? <ErrorMessage code={error} /> : null}
+                {error ? <ErrorMessage error={error} /> : null}
                 <div className="button-container">
                     <FullButton value={loading ? "Logging in ..." : "Login"} onClick={handleSubmit} />
                 </div>
