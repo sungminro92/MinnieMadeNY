@@ -1,22 +1,23 @@
 import { useState } from 'react'
 import { GrClose } from 'react-icons/gr'
-import Cart from './Cart'
+import CartItem from './CartItem'
 import './style.css'
 import { useSelector } from 'react-redux'
 
 const CartPage = ({ dispatch, show }) => {
     const { cartItems } = useSelector(state => state.cartReducer)
 
-    const [items, setItems] = useState([{
-        title: "something",
-        description: "this is description",
-        price: 15,
-    },
-    {
-        title: "this is something",
-        description: "something description",
-        price: 10,
-    }])
+    // const [items, setItems] = useState([{
+    //     title: "something",
+    //     description: "this is description",
+    //     price: 15,
+    // },
+    // {
+    //     title: "this is something",
+    //     description: "something description",
+    //     price: 10,
+    // }])
+
     return (
         <>
             <div id={show ? "main-user" : ""} onClick={() => dispatch({ type: "CART" })} ></div>
@@ -29,7 +30,7 @@ const CartPage = ({ dispatch, show }) => {
                     <div>{cartItems.length} {cartItems.length > 1 ? "items" : "item"}</div>
                 </div>
                 <div>
-                    <Cart />
+                    {cartItems && cartItems.map((item) => { return <CartItem product={item} /> })}
                 </div>
             </div >
 

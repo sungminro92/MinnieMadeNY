@@ -6,20 +6,20 @@ import monitorReducersEnhancer from '../enhancers/monitorReducers'
 import loggerMiddleware from '../middleware/logger'
 import rootReducer from './rootReducer'
 
-const initialStore = {
-    cartItems: {
+const initialState = {
+    cartReducer: {
         cartItems: JSON.parse(localStorage.getItem('cartItems')) ?? []
     }
 }
 
-export default function configureStore(initialStore) {
+export default function configureStore(preloadedState) {
     const middlewares = [loggerMiddleware, thunkMiddleware]
     const middlewareEnhancer = applyMiddleware(...middlewares)
 
     const enhancers = [middlewareEnhancer, monitorReducersEnhancer]
     const composedEnhancers = composeWithDevTools(...enhancers)
 
-    const store = createStore(rootReducer, initialStore, composedEnhancers)
+    const store = createStore(rootReducer, initialState, composedEnhancers)
 
     return store
 }

@@ -3,8 +3,13 @@ import { NavLink } from 'react-router-dom'
 import { useState } from 'react'
 import { BiCart, BiUserCircle, BiMenu, BiSearch } from 'react-icons/bi'
 import { IconContext } from "react-icons";
+
+import { useSelector } from 'react-redux'
+
 import './style.css'
 const Navigation = ({ dispatch }) => {
+    const { cartItems } = useSelector(state => state.cartReducer)
+
     const [active, setActive] = useState("")
     return (
         <div className="navigation-page">
@@ -20,7 +25,7 @@ const Navigation = ({ dispatch }) => {
 
                     <div className="nav-container flex-container">
                         <a onClick={() => dispatch({ type: "USER" })}><BiUserCircle size={30} /></a>
-                        <a onClick={() => dispatch({ type: "CART" })}><BiCart size={30} /></a>
+                        <a onClick={() => dispatch({ type: "CART" })}><BiCart size={30} /> {cartItems.length}</a>
                     </div>
                 </IconContext.Provider>
             </nav>

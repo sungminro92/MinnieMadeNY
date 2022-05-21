@@ -1,5 +1,6 @@
 #main-menu {
     position: absolute;
+
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.2)
@@ -15,6 +16,7 @@
     transition: margin 0.5s;
     margin: 0 0 0 -320px; */
     position: fixed;
+    z-index: 10;
     background-color: white;
     left: 0;
     top: 0;

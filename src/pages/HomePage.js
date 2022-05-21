@@ -1,9 +1,12 @@
+import { useEffect } from 'react'
 import { FirebaseError } from "firebase/app";
 import { collection, addDoc, doc, onSnapShot } from "firebase/firestore";
 import { db } from '../fireConfig'
 import { products } from '../products'
+import { useDispatch, useSelector } from 'react-redux'
 const HomePage = () => {
 
+    const { cartItems } = useSelector(state => state.cartReducer)
     const addData = () => {
         products.map(async (product) => {
             try {
@@ -15,9 +18,11 @@ const HomePage = () => {
         })
     }
 
-    const getData = () => {
-
-    }
+    // useEffect(() => {
+    //     // items in, the value will be. 
+    //     console.log("cart items", cartItems)
+    //     localStorage.setItem('cartItems', JSON.stringify(cartItems))
+    // }, [cartItems])
 
     return (
         <div>

@@ -12,6 +12,8 @@ div.product-card-container {
     padding: 0.5rem;
 }
 
+.product-title {}
+
 .product-options {
     display: flex;
     align-items: center;

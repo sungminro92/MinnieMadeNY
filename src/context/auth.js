@@ -13,7 +13,6 @@ const AuthProvider = ({ children }) => {
         onAuthStateChanged(auth, (user) => {
             setUser(user);
             setLoading(false);
-            // console.log("what is it", user);
         });
     }, []);
 
