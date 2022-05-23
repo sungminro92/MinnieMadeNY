@@ -56,7 +56,7 @@ const ProductCard = ({ product }) => {
     }
 
     const displayOptions = product.stemLength.map((stemLength, index) => {
-        return <div id={index} className={selectedOption === index ? "product-option selected-product-option" : "product-option"} onClick={() => { optionSelected(index) }}>{stemLength}"</div>
+        return <div key={index} id={index} className={selectedOption === index ? "product-option selected-product-option" : "product-option"} onClick={() => { optionSelected(index) }}>{stemLength}"</div>
     })
 
     console.log("selected id is", selectedOption)

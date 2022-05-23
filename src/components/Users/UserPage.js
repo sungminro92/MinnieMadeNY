@@ -25,7 +25,7 @@ const Users = ({ dispatch, show }) => {
     }
     const showContent = () => {
         if (user) {
-            return <Profile />
+            return <Profile dispatch={dispatch} />
         } else {
             if (login) {
                 return <Login dispatch={dispatch} handleClick={handleClick} />
@@ -38,7 +38,7 @@ const Users = ({ dispatch, show }) => {
     return (
         <>
             <div id={show ? "main-user" : ""} onClick={() => dispatch({ type: "USER" })}></div>
-            <div id="user-container" className={show ? "show" : ""}>
+            <div className={show ? "user-container show" : "user-container"}>
                 <div className="header">
                     <div className="cursor-pointer close-button" onClick={() => dispatch({ type: "USER" })}>
                         <GrClose size={28} />

@@ -5,7 +5,7 @@
     background-color: rgba(0, 0, 0, 0.2)
 }
 
-#user-container {
+.user-container {
     /* position: absolute;
     top: 0;
     left: 0;
@@ -24,7 +24,7 @@
     transition: transform .3s cubic-bezier(0, .52, 0, 1);
 }
 
-#user-container .header {
+.user-container .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,11 +32,11 @@
     margin: 0 auto;
 }
 
-#user-container .close-button {
+.user-container .close-button {
     width: 30px;
 }
 
-#user-container.show {
+.user-container.show {
     transform: translate3d(0vw, 0, 0)
 }
 

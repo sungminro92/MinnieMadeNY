@@ -88,9 +88,10 @@ function App() {
   // }, [cartItems])
 
   return (
-    <AuthProvider>
-      <Router>
-        <Provider store={store}>
+    <Provider store={store}>
+      <AuthProvider>
+        <Router>
+
           {/* <div className="App container mx-auto bg-gray-200 ">
         <h1>MinnieMadeNY website</h1>
         <h1 className="text-3xl font-bold underline">
@@ -113,10 +114,9 @@ function App() {
             {/* <Route path="/register" component={Register} /> */}
             <Route exact path="/" component={HomePage} />
           </Switch >
-
-        </Provider>
-      </Router>
-    </AuthProvider >
+        </Router>
+      </AuthProvider>
+    </Provider>
   )
 
 }

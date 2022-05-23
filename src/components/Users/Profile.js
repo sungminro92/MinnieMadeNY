@@ -3,13 +3,14 @@ import { signOut } from "firebase/auth";
 import { useHistory } from 'react-router-dom'
 import FullButton from '../Shared/FullButton'
 
-const Profile = () => {
+const Profile = ({ dispatch }) => {
 
     const history = useHistory();
 
     const handleSignout = async () => {
         await signOut(auth);
         history.replace("/");
+        dispatch({ type: "USER" })
     };
 
     return (

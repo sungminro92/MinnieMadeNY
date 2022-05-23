@@ -21,7 +21,7 @@ const CartPage = ({ dispatch, show }) => {
     return (
         <>
             <div id={show ? "main-user" : ""} onClick={() => dispatch({ type: "CART" })} ></div>
-            <div id="user-container" className={show ? "show" : ""}>
+            <div className={show ? "user-container show" : "user-container"}>
                 <div className="header">
                     <div className="cursor-pointer close-button" onClick={() => dispatch({ type: "CART" })}>
                         <GrClose size={28} />
@@ -30,7 +30,7 @@ const CartPage = ({ dispatch, show }) => {
                     <div>{cartItems.length} {cartItems.length > 1 ? "items" : "item"}</div>
                 </div>
                 <div>
-                    {cartItems && cartItems.map((item) => { return <CartItem product={item} /> })}
+                    {cartItems && cartItems.map((item, index) => { return <CartItem key={index} product={item} /> })}
                 </div>
             </div >
 
