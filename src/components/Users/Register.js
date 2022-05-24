@@ -17,11 +17,12 @@ const Register = ({ handleClick, dispatch }) => {
         lastName: "",
         email: "",
         password: "",
+        roles: "",
         error: null,
         loading: false,
     })
 
-    const { firstName, lastName, email, password, error, loading } = data;
+    const { firstName, lastName, email, password, roles, error, loading } = data;
 
     const history = useHistory();
 
@@ -49,6 +50,7 @@ const Register = ({ handleClick, dispatch }) => {
                 firstName,
                 lastName,
                 email,
+                roles: "user",
                 createdAt: Timestamp.fromDate(new Date()),
             });
 

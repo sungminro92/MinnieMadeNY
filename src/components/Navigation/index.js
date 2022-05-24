@@ -13,6 +13,9 @@ const Navigation = ({ dispatch }) => {
     const [active, setActive] = useState("")
     return (
         <div className="navigation-page">
+            <div className="max-width admin-button-container">
+                <NavLink to="/admin"><span className="admin-button">Go to Admin Panel</span></NavLink>
+            </div>
             <nav className="max-width flex-container">
                 <IconContext.Provider value={{ color: "black", className: "react-icons" }}>
                     <div className="menu-icon nav-container flex-container" >
@@ -29,6 +32,7 @@ const Navigation = ({ dispatch }) => {
                     </div>
                 </IconContext.Provider>
             </nav>
+
             <div className="sub-nav-conatiner">
                 <NavLink exact activeClassName="active-nav" to="/">Home</NavLink>
                 <NavLink activeClassName="active-nav" to="/wire-flowers">Flowers / Leaves</NavLink>
@@ -38,7 +42,7 @@ const Navigation = ({ dispatch }) => {
                 <NavLink activeClassName="active-nav" to="/custom-order">Custom Order</NavLink>
 
             </div>
-        </div>
+        </div >
     )
 }
 

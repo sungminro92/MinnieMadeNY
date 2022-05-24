@@ -12,13 +12,11 @@ body {
   /* margin: 0; */
 }
 
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
 
 .cursor-pointer {
   cursor: pointer
@@ -26,4 +24,18 @@ body {
 
 li {
   list-style: none;
+}
+
+.admin-button-container {
+  background-color: black;
+  color: white;
+  text-align: right;
+  height: auto;
+  padding: 0.5rem 0rem;
+  ;
+}
+
+span.admin-button {
+  margin: 0rem 1rem;
+  cursor: pointer;
 }
