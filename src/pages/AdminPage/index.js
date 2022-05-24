@@ -7,13 +7,14 @@ import ViewProducts from './ViewProducts'
 
 import { AuthContext } from '../../context/auth'
 import { Firestore } from 'firebase/firestore'
+import { Link } from 'react-router-dom'
 
 
 
 const AdminPage = () => {
     const { user, admin } = useContext(AuthContext);
 
-
+    console.log(user)
     useEffect(async () => {
         // const unsub = onSnapshot(collection(db, "flowers"), (flowers) => {
 
@@ -25,10 +26,10 @@ const AdminPage = () => {
 
     if (admin) {
         return (
-            <div>
+            <div className="max-width admin-page-container">
                 <h1>THIS IS ADMIN PAGE</h1>
-                <h2>{admin ? "THIS IS ADMIN" : "YOU'RE NOT ADMIN"}</h2>
-                <div className="admin-panel-container max-width">
+                <h2>{admin && `Welcome, ${user.firstName} + ${user.lastName}`}</h2>
+                <div className="admin-panel-container">
                     <AddProducts />
                 </div>
                 {/* <div>
@@ -38,9 +39,9 @@ const AdminPage = () => {
         )
     } else {
         return (
-            <div>
-                <h1>THIS IS ADMIN PAGE</h1>
-                <h2>{admin ? "THIS IS ADMIN" : "YOU'RE NOT ADMIN"}</h2>
+            <div className="max-width admin-page-container">
+                <h2>{!admin && "The Admin page is private"}</h2>
+                <Link to="/">Go back to HomePage</Link>
                 {/* <div className="admin-panel-container max-width">
                     <AddProducts />
                 </div> */}

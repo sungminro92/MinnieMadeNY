@@ -72,7 +72,8 @@ const AuthProvider = ({ children }) => {
                 }
             }
 
-            setUser(user);
+            const userSnap = await getDoc(docRef);
+            setUser(userSnap.data());
             if (userInfo.roles === "admin") {
                 setAdmin(true)
             }

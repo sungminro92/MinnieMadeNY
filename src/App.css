@@ -26,16 +26,7 @@ li {
   list-style: none;
 }
 
-.admin-button-container {
-  background-color: black;
-  color: white;
-  text-align: right;
-  height: auto;
-  padding: 0.5rem 0rem;
-  ;
-}
-
-span.admin-button {
-  margin: 0rem 1rem;
+a {
+  text-decoration: none;
   cursor: pointer;
 }

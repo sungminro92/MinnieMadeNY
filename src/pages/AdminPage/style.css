@@ -1,3 +1,7 @@
 .admin-panel {
     height: 100vh;
 }
+
+.admin-page-container {
+    text-align: center;
+}
