@@ -1,21 +1,25 @@
+import { useState, useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 // import { AiOutlineUser } from 'react-icons/'
-import { useState } from 'react'
+
 import { BiCart, BiUserCircle, BiMenu, BiSearch } from 'react-icons/bi'
 import { IconContext } from "react-icons";
+import { AuthContext } from '../../context/auth'
 
 import { useSelector } from 'react-redux'
 
 import './style.css'
 const Navigation = ({ dispatch }) => {
+    const { user, admin } = useContext(AuthContext)
     const { cartItems } = useSelector(state => state.cartReducer)
 
     const [active, setActive] = useState("")
     return (
         <div className="navigation-page">
-            <div className="max-width admin-button-container">
+            {/* Show Admin console only if admin is logged in */}
+            {admin ? (<div className="max-width admin-button-container">
                 <NavLink to="/admin"><span className="admin-button">Go to Admin Panel</span></NavLink>
-            </div>
+            </div>) : null}
             <nav className="max-width flex-container">
                 <IconContext.Provider value={{ color: "black", className: "react-icons" }}>
                     <div className="menu-icon nav-container flex-container" >
