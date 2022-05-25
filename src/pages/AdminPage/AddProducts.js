@@ -103,8 +103,7 @@ const AddProducts = () => {
         })
 
         // console.log("Document written with ID: ", docRef.id);
-        console.log("product Document written with ID:", docRef.id)
-
+        // console.log("product Document written with ID:", docRef.id)
 
         setProductData({
             title: "",
@@ -139,10 +138,20 @@ const AddProducts = () => {
                 <InputLabel variant="left">Produt Title</InputLabel>
                 <TextField fullWidth onChange={handleChange} value={title} name="title" variant="standard" /></div>
             <div>
-                <InputLabel id="demo-multiple-checkbox-label">Product Description</InputLabel>
-                <TextField fullWidth onChange={handleChange} value={description} name="description" variant="standard" /></div>
+                <InputLabel >Product Description</InputLabel>
+                {/* <TextField multiline maxRows={6} fullWidth onChange={handleChange} value={description} name="description" variant="standard" /></div> */}
+                <TextField
+                    label="Description"
+                    multiline
+                    fullWidth
+                    maxRows={10}
+                    name="description"
+                    value={description}
+                    onChange={handleChange}
+                />
+            </div>
             <div>
-                <InputLabel id="demo-multiple-checkbox-label">Shop Section</InputLabel>
+                <InputLabel >Shop Section</InputLabel>
                 <TextField
                     fullWidth
                     id="select-section"

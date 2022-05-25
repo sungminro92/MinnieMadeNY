@@ -8,14 +8,18 @@ const ShopFlowers = () => {
     const [flowers, setFlowers] = useState([]);
     // const displayFlowers;
     const { cartItems } = useSelector(state => state.cartReducer)
-    useEffect(async () => {
-        const unsub = onSnapshot(collection(db, "flowers"), (flowers) => {
-            let items = []
-            flowers.forEach((flower) => {
-                items.push(flower.data());
-                console.log(flower.data())
-            })
 
+    useEffect(async () => {
+        const unsub = onSnapshot(collection(db, "flowers"), (flowerData) => {
+            // console.log(flowers);
+            let items = [];
+            // flowers.data();
+            if (flowerData) {
+                flowerData.forEach((flower) => {
+                    // console.log("flower data", flower.data())
+                    items.push(flower.data());
+                })
+            }
             setFlowers(items)
         })
         return unsub;
@@ -27,9 +31,10 @@ const ShopFlowers = () => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems))
     }, [cartItems])
 
+    console.log("flowers are", flowers)
     return (
         <div>
-            <h1></h1>
+            <h1>Shop Individual Stems</h1>
             <ProductLayout products={flowers} />
         </div>
     )
