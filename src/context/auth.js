@@ -11,37 +11,8 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [admin, setAdmin] = useState(false);
-    // const [set, setSet] = useState(false)
-    // const [admin, setAdmin] = useState(false);
-    // const handleUserProfile = async (userAuth, additionalData) => {
-    //     if (!userAuth) return;
-    //     const { uid } = userAuth;
-    //     // const userRef = firebase.doc(`users/${uid}`);
-    //     const docRef = doc(db, "users", uid);
-    //     const snapshot = await getDoc(docRef);
-
-    //     if (!snapshot.exists) {
-    //         const { displayName, lastName, email } = userAuth;
-    //         const timestamp = Timestamp.fromDate(new Date())
-    //         try {
-    //             await docRef.set({
-    //                 displayName,
-    //                 lastName,
-    //                 email,
-    //                 createdAtD: timestamp,
-    //                 ...additionalData
-    //             })
-    //         } catch (err) {
-    //             console.log(err)
-    //         }
-    //     }
-    //     console.log("from fireConfig", snapshot)
-    //     // use this to update local state
-    //     return docRef;
-    // }
 
     useEffect(() => {
-
         onAuthStateChanged(auth, async (user) => {
             if (!user) {
                 setUser(user)
@@ -80,25 +51,7 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
             // console.log("current user is", user);
         });
-
-
-        // const unsubscribe = auth.onAuthStateChanged(async (userAuth) => {
-        //     if (userAuth) {
-        //         const userRef = await handleUserProfile(userAuth)
-        //         userRef.onSnapshot((snapshot) => {
-        //             setUser(snapshot.data())
-        //             setLoading(false);
-        //         })
-        //     }
-        //     // console.log("what is user", user)
-        //     // // setUser(user);
-        //     setLoading(false);
-        // });
-        // return unsubscribe;
     }, []);
-
-    // console.log("user is", user)
-    // CREATE LISTENER TO CURRENT USER
 
     if (loading) {
         return <Loading />;
