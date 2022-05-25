@@ -19,6 +19,8 @@ const ShopFlowers = () => {
                     // console.log("flower data", flower.data())
                     items.push(flower.data());
                 })
+            } else {
+                return
             }
             setFlowers(items)
         })

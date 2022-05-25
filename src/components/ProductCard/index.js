@@ -4,7 +4,7 @@ import Button from '@mui/material/Button'
 import './style.css'
 
 const ProductCard = ({ product }) => {
-    // const [priceOption, setPriceOption] = useState(0);
+    const [priceOption, setPriceOption] = useState(0);
     const [selectedOption, setSelectedOption] = useState(3);
     const [selected, setSelected] = useState({
         title: product.title,
@@ -28,16 +28,16 @@ const ProductCard = ({ product }) => {
 
 
     const addToCart = () => {
-        // console.log("item is being added", product)
-        // if (!selected.stemLength) {
-        //     console.log("length needs to be selected")
-        //     setSelected({ ...selected, error: "Please select stem length" })
-        //     disappearError()
-        // } else {
-        //     dispatch({ type: "ADD_TO_CART", payload: { ...selected, price: product.price[priceOption] } })
-        //     setSelected({ ...selected, error: "Item is added in your cart!" })
-        //     disappearError();
-        // }
+        console.log("item is being added", product)
+        if (!selected.stemLength) {
+            console.log("length needs to be selected")
+            setSelected({ ...selected, error: "Please select stem length" })
+            disappearError()
+        } else {
+            dispatch({ type: "ADD_TO_CART", payload: { ...selected, price: product.price[priceOption] } })
+            setSelected({ ...selected, error: "Item is added in your cart!" })
+            disappearError();
+        }
     }
 
     const disappearError = () => {
@@ -47,17 +47,21 @@ const ProductCard = ({ product }) => {
     }
 
     const optionSelected = (index) => {
-        // setSelectedOption(index)
-        // setPriceOption(index)
+        setSelectedOption(index)
+        setPriceOption(index)
         setSelected({
             ...selected,
-            stemLength: product.stemLength[index],
+            stemLength: product.options[index],
         })
     }
 
-    // const displayOptions = product.stemLength.map((stemLength, index) => {
-    //     return <div key={index} id={index} className={selectedOption === index ? "product-option selected-product-option" : "product-option"} onClick={() => { optionSelected(index) }}>{stemLength}"</div>
-    // })
+    const displayOptions = product.options.map((option, index) => {
+        return (
+            <>
+                <div key={index} id={index} className={selectedOption === index ? "product-option selected-product-option" : "product-option"} onClick={() => { optionSelected(index) }}>{option.stemLength}"</div>
+            </>
+        )
+    })
 
     console.log("selected id is", selectedOption)
     return (
@@ -66,11 +70,11 @@ const ProductCard = ({ product }) => {
                 <img width="100%" src={product.img} alt={product.title} />
             </div>
             <div className="product-title">{product.title}</div>
-            {/* <div className="product-options">{displayOptions}</div> */}
+            <div className="product-options">{displayOptions}</div>
             <Button fullWidth onClick={addToCart} variant="outlined" style={{ color: 'black', borderColor: 'black' }}>
                 <div className="product-add-btn" >
                     <div>ADD TO CART</div>
-                    {/* <div>${product.price[priceOption]}</div> */}
+                    <div>${product.options[priceOption].price}</div>
                 </div>
             </Button>
             <p className="error">{error}</p>
