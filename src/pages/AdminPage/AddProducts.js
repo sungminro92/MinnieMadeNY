@@ -37,10 +37,10 @@ const AddProducts = () => {
         title: "",
         description: "",
         img: null,
-        section: "flowers",
+        section: sections[0].value,
         options: [{
-            stemLength: null,
-            price: null,
+            stemLength: undefined,
+            price: undefined,
         }],
     })
     const [error, setError] = useState("");
@@ -83,6 +83,9 @@ const AddProducts = () => {
     const handleSubmit = async (event) => {
         if (imgUpload == null || !title || !description || !options) {
             setError("Please fill out all fields")
+            setTimeout(() => {
+                setError("")
+            }, 2000)
             return;
         }
 
@@ -93,7 +96,8 @@ const AddProducts = () => {
         // snap.ref.fullPath --> to save to DOC field
 
         const newProduct = doc(collection(db, section));
-        const docRef = await setDoc(newProduct, {
+        const docRef = await addDoc(newProduct, {
+            id: docRef.id,
             title,
             section,
             description,
@@ -103,7 +107,8 @@ const AddProducts = () => {
         })
 
         // console.log("Document written with ID: ", docRef.id);
-        // console.log("product Document written with ID:", docRef.id)
+        console.log("product Document written with ID:", docRef.id)
+        setError("Product uploaded successfully!")
 
         setProductData({
             title: "",
@@ -115,27 +120,16 @@ const AddProducts = () => {
                 price: "",
             }],
         })
-        setError("")
     }
 
-    const displayOptionInputs = productData.options.map((option, i) => {
-
-        return (
-            <div>
-                <p>Option {i + 1}</p>
-                <TextField fullWidth onChange={handleOptionChange(i)} value={option.stemLength} name="stemLength" label="Stem Length" variant="standard" />
-                <TextField fullWidth onChange={handleOptionChange(i)} value={option.price} name="price" label="Product Price" variant="standard" />
-                <button onClick={deleteOption}>Delete</button>
-            </div>
-        )
-    })
-    console.log("product data", productData)
+    const displayOptionInputs =
+        console.log("product data", productData)
 
     return (
-        <div className="addProduct-container" >
+        <div className="addProduct-container">
             <h1>Add Products</h1>
             <div>
-                <InputLabel variant="left">Produt Title</InputLabel>
+                <InputLabel variant="standard">Produt Title</InputLabel>
                 <TextField fullWidth onChange={handleChange} value={title} name="title" variant="standard" /></div>
             <div>
                 <InputLabel >Product Description</InputLabel>
@@ -151,7 +145,7 @@ const AddProducts = () => {
                 />
             </div>
             <div>
-                <InputLabel >Shop Section</InputLabel>
+                <InputLabel variant="standard">Shop Section</InputLabel>
                 <TextField
                     fullWidth
                     id="select-section"
@@ -170,11 +164,19 @@ const AddProducts = () => {
             <div>
                 <button onClick={() => onClick()}>Add an option</button>
             </div>
-            <div>{displayOptionInputs}</div>
+            <div>{productData.options.map((option, i) => {
+                return (
+                    <div>
+                        <p>Option {i + 1}</p>
+                        <TextField fullWidth onChange={handleOptionChange(i)} value={option.stemLength} name="stemLength" label="Stem Length" variant="standard" />
+                        <TextField fullWidth onChange={handleOptionChange(i)} value={option.price} name="price" label="Product Price" variant="standard" />
+                        <button onClick={deleteOption}>Delete</button>
+                    </div>
+                )
+            })}</div>
 
 
             <input className="img-input" type="file" onChange={(event) => setImgUpload(event.target.files[0])} />
-
             <ErrorMessage err={error} />
             <FullButton onClick={handleSubmit} value={"ADD PRODUCT"} />
         </div >

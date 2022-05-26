@@ -10,7 +10,7 @@ import ErrorMessage from '../Shared/ErrorMessage'
 import { FcGoogle } from 'react-icons/fc'
 import { FirebaseError } from "firebase/app";
 
-const LoginPage = ({ handleClick, dispatch }) => {
+const LoginPage = ({ handleClick, func }) => {
     const [data, setData] = useState({
         email: "",
         password: "",
@@ -59,7 +59,7 @@ const LoginPage = ({ handleClick, dispatch }) => {
                             console.log("successful signin", user)
 
                             history.replace("/");
-                            dispatch({ type: "USER" })
+                            func({ type: "USER" })
                         })
                         .catch((error) => {
                             // const errorCode = error.code;

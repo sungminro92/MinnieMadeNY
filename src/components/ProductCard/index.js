@@ -7,16 +7,15 @@ const ProductCard = ({ product }) => {
     const [priceOption, setPriceOption] = useState(0);
     const [selectedOption, setSelectedOption] = useState(3);
     const [selected, setSelected] = useState({
-        title: product.title,
-        description: product.description,
         stemLength: "",
         price: "",
-        error: "",
     })
+    const [error, setError] = useState("")
 
-    const { title, description, stemLength, price, error } = selected;
+    const { title, description, stemLength, price } = selected;
     const dispatch = useDispatch()
 
+    console.log("product card value:", selected)
     // To store data
     // localStorage.setItem('Name', 'Rahul');
     // To retrieve data
@@ -31,18 +30,18 @@ const ProductCard = ({ product }) => {
         console.log("item is being added", product)
         if (!selected.stemLength) {
             console.log("length needs to be selected")
-            setSelected({ ...selected, error: "Please select stem length" })
+            setError("Please select stem length")
             disappearError()
         } else {
-            dispatch({ type: "ADD_TO_CART", payload: { ...selected, price: product.price[priceOption] } })
-            setSelected({ ...selected, error: "Item is added in your cart!" })
+            dispatch({ type: "ADD_TO_CART", payload: { ...selected, title: product.title, description: product.description, img: product.img, quantity: 1, price: product.options[priceOption].price } })
+            setError("Item is added in your cart!")
             disappearError();
         }
     }
 
     const disappearError = () => {
         setTimeout(() => {
-            setSelected({ ...selected, error: "" })
+            setError("")
         }, 2000)
     }
 
@@ -51,17 +50,9 @@ const ProductCard = ({ product }) => {
         setPriceOption(index)
         setSelected({
             ...selected,
-            stemLength: product.options[index],
+            stemLength: product.options[index].stemLength,
         })
     }
-
-    const displayOptions = product.options.map((option, index) => {
-        return (
-            <>
-                <div key={index} id={index} className={selectedOption === index ? "product-option selected-product-option" : "product-option"} onClick={() => { optionSelected(index) }}>{option.stemLength}"</div>
-            </>
-        )
-    })
 
     console.log("selected id is", selectedOption)
     return (
@@ -70,7 +61,15 @@ const ProductCard = ({ product }) => {
                 <img width="100%" src={product.img} alt={product.title} />
             </div>
             <div className="product-title">{product.title}</div>
-            <div className="product-options">{displayOptions}</div>
+            <div className="product-options">
+                {product.options.map((option, index) => {
+                    return (
+                        <>
+                            <div key={index} id={index} className={selectedOption === index ? "product-option selected-product-option" : "product-option"} onClick={() => { optionSelected(index) }}>{option.stemLength}"</div>
+                        </>
+                    )
+                })}
+            </div>
             <Button fullWidth onClick={addToCart} variant="outlined" style={{ color: 'black', borderColor: 'black' }}>
                 <div className="product-add-btn" >
                     <div>ADD TO CART</div>

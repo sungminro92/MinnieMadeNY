@@ -26,3 +26,15 @@
 .img-input {
     margin: 1rem 0rem 1.5rem 0rem;
 }
+
+.page-types {
+    display: flex;
+}
+
+.page-types p {
+    margin: 0rem 1rem;
+}
+
+.page-types p.selected {
+    font-weight: bold
+}

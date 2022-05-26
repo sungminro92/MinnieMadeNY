@@ -9,7 +9,7 @@ const HomePage = () => {
 
     const { cartItems } = useSelector(state => state.cartReducer)
     const addData = () => {
-        products.map(async (product) => {
+        products.forEach(async (product) => {
             try {
                 await addDoc(collection(db, "flowers"), product);
                 console.log("products uploaded")

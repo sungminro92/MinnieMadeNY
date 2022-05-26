@@ -1,7 +1,7 @@
 import { useState, useReduceer, useEffect } from 'react'
 import './style.css'
 
-const ErrorMessage = ({ err }) => {
+const ErrorMessage = ({ err, positive }) => {
 
     const [error, setError] = useState("");
     // console.log(err);
@@ -18,14 +18,14 @@ const ErrorMessage = ({ err }) => {
         }
     }, [err])
 
-    // const disappearError = () => {
-    //     setTimeout(() => {
-    //         setError("")
-    //     }, 2000)
-    // }
+    const disappearError = () => {
+        setTimeout(() => {
+            setError("")
+        }, 2000)
+    }
 
     return (
-        <p className="error">{error}</p>
+        <p className={positive ? "positive-error" : "error"}>{error}</p>
     )
 }
 

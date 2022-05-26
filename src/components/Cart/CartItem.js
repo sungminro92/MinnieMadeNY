@@ -1,14 +1,21 @@
 
 // import { useSelector } from 'react-redux'
-const CartItem = ({ product }) => {
+import AiOutlineMinusCircle from 'react-icons/ai'
+import AiOutlinePlusCircle from 'react-icons/ai'
 
-    // const { cartItems } = useSelector(state => state.cartReducer)
+const CartItem = ({ product, key, index, deleteCartItem }) => {
 
     return (
-        <div className="cart-item-container">
-            <h5>{product.title}</h5>
-            <div><img src={product.img} alt="" /></div>
-
+        <div className="cart-item">
+            <div className="cart-item-img">
+                <img width="100%" src={product.img} alt="" />
+            </div>
+            <div>
+                <p>{product.title}</p>
+                <p>stem length: {product.stemLength}</p>
+                <p>quantity: {product.quantity}</p>
+            </div>
+            <p onClick={() => deleteCartItem(index)}> delete </p>
         </div>
     )
 }

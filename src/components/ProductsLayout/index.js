@@ -7,12 +7,8 @@ import './style.css'
 const ProductLayout = ({ products }) => {
 
     const displayProducts = products.map((product, index) => {
-        return <ProductCard product={product} key={index} />
+        return <ProductCard key={index} product={product} />
     })
-
-    // useEffect(() => {
-    //     localStorage.setItem('cartItems', JSON.stringify(cartItems));
-    // }, [cartItems])
 
     return (
         <div>

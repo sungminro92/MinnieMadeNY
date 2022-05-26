@@ -14,9 +14,11 @@
 .logotype {
     font-family: 'DM Serif Text', serif;
     /* font-family: 'Vidaloka', serif; */
+    color: black;
     font-size: 25px;
     margin: 0;
     padding: 0;
+    cursor: pointer
 }
 
 .max-width {

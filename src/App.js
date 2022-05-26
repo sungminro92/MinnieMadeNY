@@ -100,10 +100,10 @@ function App() {
       </div> */}
 
           {/* {showMenu ? <MainMenu handleShowMenu={handleShowMenu} /> : null} */}
-          <MainMenu dispatch={dispatch} show={state.main} />
-          <UserPage dispatch={dispatch} show={state.user} />
-          <CartPage dispatch={dispatch} show={state.cart} />
-          <Navigation dispatch={dispatch} />
+          <MainMenu func={dispatch} show={state.main} />
+          <UserPage func={dispatch} show={state.user} />
+          <CartPage func={dispatch} show={state.cart} />
+          <Navigation func={dispatch} />
           <Switch>
             <Route path="/wire-flowers" component={ShopFlowers} />
             <Route path="/wire-wall-decors" component={ShopWallDecors} />

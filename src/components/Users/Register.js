@@ -11,7 +11,7 @@ import Button from '@mui/material/Button'
 import FullButton from '../Shared/FullButton'
 import { FcGoogle } from 'react-icons/fc'
 
-const Register = ({ handleClick, dispatch }) => {
+const Register = ({ handleClick, func }) => {
     const [data, setData] = useState({
         firstName: "",
         lastName: "",
@@ -64,7 +64,7 @@ const Register = ({ handleClick, dispatch }) => {
             });
 
             history.replace("/");
-            dispatch({ type: "USER" })
+            func({ type: "USER" })
 
         } catch (err) {
             setData({ ...data, error: err.message, loading: false })

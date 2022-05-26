@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         onAuthStateChanged(auth, async (user) => {
             if (!user) {
-                setUser(user)
+                setUser(null)
                 setLoading(false)
                 setAdmin(false);
                 return;

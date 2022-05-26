@@ -10,7 +10,7 @@ import './style.css'
 import { AuthContext } from '../../context/auth'
 
 
-const Users = ({ dispatch, show }) => {
+const Users = ({ func, show }) => {
     const [login, setLogin] = useState(true);
 
     function handleClick() {
@@ -25,26 +25,26 @@ const Users = ({ dispatch, show }) => {
     }
     const showContent = () => {
         if (user) {
-            return <Profile dispatch={dispatch} />
+            return <Profile func={func} />
         } else {
             if (login) {
-                return <Login dispatch={dispatch} handleClick={handleClick} />
+                return <Login func={func} handleClick={handleClick} />
             } else {
-                return <Register dispatch={dispatch} handleClick={handleClick} />
+                return <Register func={func} handleClick={handleClick} />
             }
         }
     }
 
     return (
         <>
-            <div id={show ? "main-user" : ""} onClick={() => dispatch({ type: "USER" })}></div>
+            <div id={show ? "main-user" : ""} onClick={() => func({ type: "USER" })}></div>
             <div className={show ? "user-container show" : "user-container"}>
                 <div className="header">
-                    <div className="cursor-pointer close-button" onClick={() => dispatch({ type: "USER" })}>
+                    <div className="cursor-pointer close-button" onClick={() => func({ type: "USER" })}>
                         <GrClose size={28} />
                     </div>
                     {user ? (<div><h3>Your Account</h3></div>) : (<div> {login ? <h3> Signin</h3> : <h3> Signup </h3>}</div>)}
-                    < div onClick={() => dispatch({ type: "SWITCH" })}><BiCart size={30} /></div>
+                    < div onClick={() => func({ type: "SWITCH" })}><BiCart size={30} /></div>
                 </div>
                 <div>
                     {showContent()}

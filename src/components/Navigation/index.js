@@ -9,7 +9,7 @@ import { AuthContext } from '../../context/auth'
 import { useSelector } from 'react-redux'
 
 import './style.css'
-const Navigation = ({ dispatch }) => {
+const Navigation = ({ func }) => {
     const { user, admin } = useContext(AuthContext)
     const { cartItems } = useSelector(state => state.cartReducer)
 
@@ -23,16 +23,16 @@ const Navigation = ({ dispatch }) => {
             <nav className="max-width flex-container">
                 <IconContext.Provider value={{ color: "black", className: "react-icons" }}>
                     <div className="menu-icon nav-container flex-container" >
-                        <a onClick={() => dispatch({ type: "MAIN" })}><BiMenu size={30} /></a>
+                        <a onClick={() => func({ type: "MAIN" })}><BiMenu size={30} /></a>
                         {/* <a ><BiSearch size={30} /></a> */}
                     </div>
                     <div>
-                        <p className="logotype">MinnieMadeNY</p>
+                        <NavLink exact to="/" className="logotype"> MinnieMadeNY</NavLink>
                     </div>
 
                     <div className="nav-container flex-container">
-                        <a onClick={() => dispatch({ type: "USER" })}><BiUserCircle size={30} /></a>
-                        <a onClick={() => dispatch({ type: "CART" })}><BiCart size={30} /> {cartItems.length}</a>
+                        <a onClick={() => func({ type: "USER" })}><BiUserCircle size={30} /></a>
+                        <a onClick={() => func({ type: "CART" })}><BiCart size={30} /> {cartItems.length}</a>
                     </div>
                 </IconContext.Provider>
             </nav>
