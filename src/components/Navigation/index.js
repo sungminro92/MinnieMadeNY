@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 // import { AiOutlineUser } from 'react-icons/'
 
@@ -14,10 +14,21 @@ const Navigation = ({ func }) => {
     const { cartItems } = useSelector(state => state.cartReducer)
 
     const [active, setActive] = useState("")
+
+    const countItems = () => {
+        let numOfCarItems = 0;
+        cartItems.forEach((item) => {
+            console.log("item quanityt", item.quantity)
+            numOfCarItems += item.quantity;
+        })
+
+        return numOfCarItems;
+    }
+
     return (
         <div className="navigation-page">
             {/* Show Admin console only if admin is logged in */}
-            {admin ? (<div className="max-width admin-button-container">
+            {admin ? (<div className="admin-button-container">
                 <NavLink to="/admin"><span className="admin-button">Go to Admin Panel</span></NavLink>
             </div>) : null}
             <nav className="max-width flex-container">
@@ -32,7 +43,7 @@ const Navigation = ({ func }) => {
 
                     <div className="nav-container flex-container">
                         <a onClick={() => func({ type: "USER" })}><BiUserCircle size={30} /></a>
-                        <a onClick={() => func({ type: "CART" })}><BiCart size={30} /> {cartItems.length}</a>
+                        <a onClick={() => func({ type: "CART" })}><BiCart size={30} /> {countItems()}</a>
                     </div>
                 </IconContext.Provider>
             </nav>

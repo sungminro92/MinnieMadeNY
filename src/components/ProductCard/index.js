@@ -33,7 +33,7 @@ const ProductCard = ({ product }) => {
             setError("Please select stem length")
             disappearError()
         } else {
-            dispatch({ type: "ADD_TO_CART", payload: { ...selected, title: product.title, description: product.description, img: product.img, quantity: 1, price: product.options[priceOption].price } })
+            dispatch({ type: "ADD_TO_CART", value: { ...selected, title: product.title, description: product.description, img: product.img, quantity: 1, price: product.options[priceOption].price } })
             setError("Item is added in your cart!")
             disappearError();
         }
