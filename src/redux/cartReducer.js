@@ -5,7 +5,7 @@ const initialState = {
 export const cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case "ADD_TO_CART":
-            const index = state.cartItems.findIndex(item => item.title === action.value.title);
+            const index = state.cartItems.findIndex(item => item.title === action.value.title && item.stemLength === action.value.stemLength);
             if (index === -1) {
                 return {
                     ...state,

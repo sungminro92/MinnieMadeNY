@@ -52,7 +52,7 @@ const AdminPage = () => {
                     <p className={pageSelect === "ORDERS" ? "selected" : ""} onClick={() => handleClick("ORDERS")}>View Orders</p>
 
                 </div>
-                <div className="admin-panel-container">
+                <div className="max-width admin-panel-container">
                     {(function () {
                         switch (pageType) {
                             case "PRODUCTS":

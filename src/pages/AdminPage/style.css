@@ -8,6 +8,10 @@
     align-items: center;
 }
 
+.admin-panel-container {
+    display: 100%;
+}
+
 /* AddProducts  */
 .addProduct-container {
     width: 600px;
@@ -33,8 +37,12 @@
 
 .page-types p {
     margin: 0rem 1rem;
+    cursor: pointer;
 }
 
 .page-types p.selected {
     font-weight: bold
 }
+
+/* VIEW PRODUCTS PAGE */
+.admin-products-page div {}

@@ -7,7 +7,7 @@ import Select from '@mui/material/Select';
 import FullButton from '../../components/Shared/FullButton'
 import { db, storage } from '../../fireConfig'
 
-import { addDoc, setDoc, doc, collection } from 'firebase/firestore'
+import { addDoc, updateDoc, doc, collection } from 'firebase/firestore'
 import { ref, getDownloadURL, uploadBytes } from 'firebase/storage';
 
 import ErrorMessage from '../../components/Shared/ErrorMessage'
@@ -45,7 +45,7 @@ const AddProducts = () => {
     })
     const [error, setError] = useState("");
 
-    const { title, description, img, section, options } = productData
+    const { title, description, img, section, options, imgPath } = productData
 
     const [imgUpload, setImgUpload] = useState(null)
 
@@ -95,20 +95,20 @@ const AddProducts = () => {
         const url = await getDownloadURL(ref(storage, snap.ref.fullPath));
         // snap.ref.fullPath --> to save to DOC field
 
-        const newProduct = doc(collection(db, section));
-        const docRef = await addDoc(newProduct, {
-            id: docRef.id,
+        const newProductRef = collection(db, section);
+        const docRef = await addDoc(newProductRef, {
             title,
             section,
             description,
-            options,
             img: url,
-            imgPath: snap.ref.fullPath,
+            options,
+            imgPath: snap.ref.fullPath
+        });
+        const updateProduct = await updateDoc(doc(db, section, docRef.id), {
+            id: docRef.id,
         })
 
-        // console.log("Document written with ID: ", docRef.id);
-        console.log("product Document written with ID:", docRef.id)
-        setError("Product uploaded successfully!")
+        setError("Product uploaded successfully!", docRef.id)
 
         setProductData({
             title: "",
@@ -119,6 +119,7 @@ const AddProducts = () => {
                 stemLength: "",
                 price: "",
             }],
+            imgPath: "",
         })
     }
 
