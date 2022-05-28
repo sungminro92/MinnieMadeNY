@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom'
 import { GrClose } from 'react-icons/gr'
 import './style.css'
 
-const MainMenu = ({ dispatch, show }) => {
+const MainMenu = ({ func, show }) => {
     return (
         <>
-            <div id={show ? "main-menu" : ""} onClick={() => dispatch({ type: "MAIN" })} >
+            <div id={show ? "main-menu" : ""} onClick={() => func({ type: "MAIN" })} >
             </div >
             <div id="menu-container" className={show ? "show" : ""}>
-                <div className="cursor-pointer" onClick={() => dispatch({ type: "MAIN" })}>
+                <div className="cursor-pointer" onClick={() => func({ type: "MAIN" })}>
                     <GrClose size={28} />
                 </div>
                 <div>

@@ -1,15 +1,20 @@
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 import { db } from '../../fireConfig'
-import { query, collection, getDocs, onSnapshot } from "firebase/firestore"
+import { collection, onSnapshot } from "firebase/firestore"
 import { useEffect } from 'react'
 import { TextField } from '@mui/material'
 import { MenuItem } from '@mui/material'
 
+import EditProduct from './EditProduct'
+
 const ViewProducts = () => {
     const [products, setProducts] = useState([])
     const [section, setSection] = useState("flowers")
-    const { cartItems } = useSelector(state => state.cartReducer)
+    const [editPage, setEditPage] = useState(false);
+    const [productToEdit, setProductToEdit] = useState({})
+    const [imgUpload, setImgUpload] = useState(null)
+    // const { cartItems } = useSelector(state => state.cartReducer)
     const sections = [
         {
             value: 'flowers',
@@ -33,6 +38,19 @@ const ViewProducts = () => {
         setSection(e.target.value);
     }
 
+    const handleClickEdit = (product) => {
+        setEditPage(!editPage);
+        setProductToEdit(product);
+    }
+
+    const handleClickDelete = () => {
+
+    }
+
+    const handleClickEditClose = () => {
+        setEditPage(!editPage)
+    }
+
     const getProducts = () => {
         const unsub = onSnapshot(collection(db, section), (productData) => {
             // console.log(flowers);
@@ -54,15 +72,19 @@ const ViewProducts = () => {
     useEffect(() => {
         getProducts()
     }, [])
+
     useEffect(() => {
         getProducts()
     }, [section])
 
     const displayProducts = products.map((product, index) => {
-        return <div> {index + 1}. {product.title} - {product.description} - {product.options.map(p => `${p.stemLength}/$${p.price}  `)}</div>
+        return <div> {index + 1}. {product.title} - {product.description} - {product.options.map(p => `${p.stemLength}/$${p.price}  `)} <span onClick={() => handleClickEdit(product)} className="action-button admin-edit-product">[EDIT]</span> <span className="action-button admin-delete-product">[DELETE]</span></div>
     })
+
     return (
+
         <div className="max-width admin-products-page">
+
             <div>
                 <TextField
                     fullWidth
@@ -83,6 +105,9 @@ const ViewProducts = () => {
             <div>
                 {displayProducts}
             </div>
+
+            {editPage ? <EditProduct product={productToEdit} handleClickEditClose={handleClickEditClose} /> : null}
+
         </div>
     )
 }

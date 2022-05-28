@@ -30,3 +30,11 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+
+.action-button {
+  cursor: pointer
+}
+
+.action-button:hover {
+  font-weight: bold;
+}

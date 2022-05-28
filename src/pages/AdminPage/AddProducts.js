@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem';
-import OutlinedInput from '@mui/material/OutlinedInput';
+// import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
-import Select from '@mui/material/Select';
+// import Select from '@mui/material/Select';
 import FullButton from '../../components/Shared/FullButton'
 import { db, storage } from '../../fireConfig'
 
@@ -53,7 +53,7 @@ const AddProducts = () => {
         setProductData({ ...productData, [e.target.name]: e.target.value });
     };
 
-    const onClick = () => {
+    const addOptionField = () => {
         // setNumOfOptions(numOfOptions + 1)
         let newArr = productData.options;
         newArr.push({
@@ -104,7 +104,7 @@ const AddProducts = () => {
             options,
             imgPath: snap.ref.fullPath
         });
-        const updateProduct = await updateDoc(doc(db, section, docRef.id), {
+        await updateDoc(doc(db, section, docRef.id), {
             id: docRef.id,
         })
 
@@ -163,7 +163,7 @@ const AddProducts = () => {
                 </TextField>
             </div>
             <div>
-                <button onClick={() => onClick()}>Add an option</button>
+                <button onClick={() => addOptionField()}>Add an option</button>
             </div>
             <div>{productData.options.map((option, i) => {
                 return (

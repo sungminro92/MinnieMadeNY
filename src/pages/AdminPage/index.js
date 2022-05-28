@@ -4,9 +4,10 @@ import './style.css'
 import AddProducts from './AddProducts'
 import Orders from './Orders'
 import ViewProducts from './ViewProducts'
+import EditProduct from './EditProduct'
 
 import { AuthContext } from '../../context/auth'
-import { Firestore } from 'firebase/firestore'
+// import { Firestore } from 'firebase/firestore'
 import { Link } from 'react-router-dom'
 
 
@@ -16,7 +17,7 @@ const AdminPage = () => {
     const [pageType, setPageType] = useState("ADD");
     const [pageSelect, setPageSelect] = useState("")
 
-    useEffect(async () => {
+    useEffect(() => {
         // const unsub = onSnapshot(collection(db, "flowers"), (flowers) => {
 
         // })
@@ -50,7 +51,7 @@ const AdminPage = () => {
                     <p className={pageSelect === "ADD" ? "selected" : ""} onClick={() => handleClick("ADD")}>Add Products</p>
                     <p className={pageSelect === "PRODUCTS" ? "selected" : ""} onClick={() => handleClick("PRODUCTS")}>View Products</p>
                     <p className={pageSelect === "ORDERS" ? "selected" : ""} onClick={() => handleClick("ORDERS")}>View Orders</p>
-
+                    <p className={pageSelect === "EDIT" ? "selected" : ""} onClick={() => handleClick("EDIT")}>Edit Product</p>
                 </div>
                 <div className="max-width admin-panel-container">
                     {(function () {
@@ -61,6 +62,8 @@ const AdminPage = () => {
                                 return <Orders />
                             case "ADD":
                                 return <AddProducts />
+                            case "EDIT":
+                                return <EditProduct />
                             default:
                                 return <AddProducts />
                         }
