@@ -1,19 +1,20 @@
 import { useState } from 'react'
 // import { useSelector } from 'react-redux'
 import { db } from '../../fireConfig'
-import { collection, onSnapshot } from "firebase/firestore"
+import { doc, collection, onSnapshot, deleteDoc } from "firebase/firestore"
 import { useEffect } from 'react'
 import { TextField } from '@mui/material'
 import { MenuItem } from '@mui/material'
 
 import EditProduct from './EditProduct'
+import AdminProduct from './AdminProduct'
 
 const ViewProducts = () => {
     const [products, setProducts] = useState([])
     const [section, setSection] = useState("flowers")
     const [editPage, setEditPage] = useState(false);
     const [productToEdit, setProductToEdit] = useState({})
-    const [imgUpload, setImgUpload] = useState(null)
+
     // const { cartItems } = useSelector(state => state.cartReducer)
     const sections = [
         {
@@ -43,7 +44,13 @@ const ViewProducts = () => {
         setProductToEdit(product);
     }
 
-    const handleClickDelete = () => {
+    const handleClickDelete = async (product) => {
+        if (window.confirm(`Are you sure to delete ${product.title}`) == true) {
+            await deleteDoc(doc(db, product.section, product.id));
+        } else {
+            return
+        }
+
 
     }
 
@@ -78,13 +85,13 @@ const ViewProducts = () => {
     }, [section])
 
     const displayProducts = products.map((product, index) => {
-        return <div> {index + 1}. {product.title} - {product.description} - {product.options.map(p => `${p.stemLength}/$${p.price}  `)} <span onClick={() => handleClickEdit(product)} className="action-button admin-edit-product">[EDIT]</span> <span className="action-button admin-delete-product">[DELETE]</span></div>
+        return <div> {index + 1}. {product.title} - {product.description} - {product.options.map(p => `${p.stemLength}/$${p.price}  `)} <span onClick={() => handleClickEdit(product)} className="action-button admin-edit-product">[EDIT]</span> <span onClick={() => handleClickDelete(product)} className="action-button admin-delete-product">[DELETE]</span></div>
+        // return <AdminProduct product={product} />
     })
 
     return (
 
         <div className="max-width admin-products-page">
-
             <div>
                 <TextField
                     fullWidth

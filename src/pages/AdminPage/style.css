@@ -6,13 +6,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 .admin-panel-container {
-    display: 100%;
+    width: 100%;
+}
+
+.page-types {
+    padding: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid black;
 
 }
+
 
 /* AddProducts  */
 .addProduct-container {
@@ -48,16 +54,15 @@
 }
 
 /* VIEW PRODUCTS PAGE */
+
 .admin-products-page {
-    width: 100%;
+
     margin: 0 auto;
 }
 
 .admin-products-page {
     width: 100%;
 }
-
-
 
 /* EDIT PRODUCT PAGE */
 .product-edit-page {
@@ -92,4 +97,17 @@
     /* right: 1rem;
     top: 1rem; */
     /* font-size:  */
+}
+
+
+/* ADMIN PRODUCT LIST PAGE */
+
+.admin-product-container {
+    width: 100%;
+    display: flex;
+    background-color: yellow;
+}
+
+.admin-product-container img {
+    width: 100px;
 }
