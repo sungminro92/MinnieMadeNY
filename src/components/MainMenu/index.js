@@ -13,13 +13,13 @@ const MainMenu = ({ func, show }) => {
                 </div>
                 <div>
                     <ul>
-                        <li><Link to="/products">Shop All</Link></li>
-                        <li><Link to="/bestsellers">Bestsellers</Link></li>
-                        <li><Link to="/gift-cards">Gift Cards</Link></li>
-                        <li><Link to="/about-page">About MinnieMadeNY</Link></li>
-                        <li><Link to="/tutlrials">Tutorials</Link></li>
-                    </ul>
-                </div>
+                        <li><Link to="/products" onClick={() => func({ type: "MAIN" })}>Shop All</Link></li>
+                        <li><Link to="/bestsellers" onClick={() => func({ type: "MAIN" })}>Bestsellers</Link></li>
+                        <li><Link to="/gift-cards" onClick={() => func({ type: "MAIN" })}>Gift Cards</Link></li>
+                        <li><Link to="/about-page" onClick={() => func({ type: "MAIN" })}>About MinnieMadeNY</Link></li>
+                        <li><Link to="/tutorials" onClick={() => func({ type: "MAIN" })}>Tutorials</Link></li >
+                    </ul >
+                </div >
             </div >
         </>
     )

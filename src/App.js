@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState, useReducer, useEffect } from 'react'
+import { useState, useReducer, useEffect, createContext } from 'react'
 
 import { Provider } from "react-redux";
 import AuthProvider from "./context/auth";
@@ -18,7 +18,7 @@ import CartPage from './components/Cart/CartPage'
 import Navigation from './components/Navigation'
 import MainMenu from './components/MainMenu'
 import UserPage from './components/Users/UserPage'
-
+import TutorialsPage from './pages/TutorialsPage'
 // import { StaticRouter } from 'react-router-dom';
 const store = configureStore()
 
@@ -62,8 +62,20 @@ function showMenuReducer(state, action) {
   }
 }
 
-
+export const WidthContext = createContext()
 function App() {
+  const [width, setWindowWidth] = useState(0);
+  useEffect(() => {
+    updateDimensions();
+
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
+
+  const updateDimensions = () => {
+    const width = window.innerWidth;
+    setWindowWidth(width);
+  };
   // const [show, setShow] = useState({
   //   main: false,
   //   user: false,
@@ -81,42 +93,44 @@ function App() {
     console.log("sidebarclosed")
   }
 
-
-
   // useEffect(() => {
   //   localStorage.setItem('cartItems', JSON.stringify(cartItems));
   // }, [cartItems])
 
+
   return (
     <Provider store={store}>
       <AuthProvider>
-        <Router>
+        <WidthContext.Provider value={width} >
+          <Router>
 
-          {/* <div className="App container mx-auto bg-gray-200 ">
+            {/* <div className="App container mx-auto bg-gray-200 ">
         <h1>MinnieMadeNY website</h1>
         <h1 className="text-3xl font-bold underline">
           Hello world!
         </h1>
       </div> */}
 
-          {/* {showMenu ? <MainMenu handleShowMenu={handleShowMenu} /> : null} */}
-          <MainMenu func={dispatch} show={state.main} />
-          <UserPage func={dispatch} show={state.user} />
-          <CartPage func={dispatch} show={state.cart} />
-          <Navigation func={dispatch} />
-          <Switch>
-            <Route path="/wire-flowers" component={ShopFlowers} />
-            <Route path="/wire-wall-decors" component={ShopWallDecors} />
-            <Route path="/wire-arts-accessories" component={ShopArts} />
-            <Route path="/product-details" component={ProductInfo} />
-            <Route path="/admin" component={AdminPage} />
-            {/* <Route path="/cart" component={CartPage} /> */}
-            {/* <Route path="/register" component={Register} /> */}
-            <Route exact path="/" component={HomePage} />
-          </Switch >
-        </Router>
+            {/* {showMenu ? <MainMenu handleShowMenu={handleShowMenu} /> : null} */}
+            <MainMenu func={dispatch} show={state.main} />
+            <UserPage func={dispatch} show={state.user} />
+            <CartPage func={dispatch} show={state.cart} />
+            <Navigation func={dispatch} />
+            <Switch>
+              <Route path="/wire-flowers" component={ShopFlowers} />
+              <Route path="/wire-wall-decors" component={ShopWallDecors} />
+              <Route path="/wire-arts-accessories" component={ShopArts} />
+              <Route path="/product-details" component={ProductInfo} />
+              <Route path="/tutorials" component={TutorialsPage} />
+              <Route path="/admin" component={AdminPage} />
+              {/* <Route path="/cart" component={CartPage} /> */}
+              {/* <Route path="/register" component={Register} /> */}
+              <Route exact path="/" component={HomePage} />
+            </Switch >
+          </Router>
+        </WidthContext.Provider>
       </AuthProvider>
-    </Provider>
+    </Provider >
   )
 
 }

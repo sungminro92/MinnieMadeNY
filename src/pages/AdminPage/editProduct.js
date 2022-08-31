@@ -26,7 +26,7 @@ const sections = [
     },
 ];
 
-const EditProduct = ({ product, handleClickEditClose }) => {
+const EditProduct = ({ product, handleEditPage, handleClickEditClose }) => {
     const [productData, setProductData] = useState({
         title: "",
         description: "",
@@ -102,6 +102,7 @@ const EditProduct = ({ product, handleClickEditClose }) => {
             img,
         })
         console.log("Product updated!")
+        handleEditPage();
     }
 
     return (

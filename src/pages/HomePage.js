@@ -4,6 +4,9 @@ import { collection, addDoc, doc, onSnapShot } from "firebase/firestore";
 import { db } from '../fireConfig'
 import { products } from '../products'
 import { useDispatch, useSelector } from 'react-redux'
+import ImageCarousel from '../components/ImageCarousel';
+import './style.css'
+
 const HomePage = () => {
     const [bannerImg, setBannerImg] = useState("")
 
@@ -27,11 +30,15 @@ const HomePage = () => {
 
     return (
         <div>
-            <h1>Home Page</h1>
-            <div className="banner-container">
-                <img src={bannerImg} alt="" />
+            <ImageCarousel />
+            {/* <button onClick={addData} className="w-300 flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"> add data to firebase</button> */}
+            <div className="homepage-section-2">
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
-            <button onClick={addData} className="w-300 flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"> add data to firebase</button>
+            <div className="homepage-section-3"></div>
+            <div className="homepage-section-4"></div>
         </div>
     )
 }

@@ -20,8 +20,9 @@ const CartPage = ({ func, show }) => {
     // }])
     console.log("cart items", cartItems)
 
-    const deleteCartItem = (id) => {
-        dispatch({ type: "DELETE_FROM_CART", value: id })
+    const deleteCartItem = (product) => {
+        dispatch({ type: "DELETE_FROM_CART", value: product })
+        console.log(product)
     }
 
     return (

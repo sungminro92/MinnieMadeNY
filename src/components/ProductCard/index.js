@@ -51,6 +51,7 @@ const ProductCard = ({ product }) => {
         setSelected({
             ...selected,
             stemLength: product.options[index].stemLength,
+            price: product.options[index].price
         })
     }
 

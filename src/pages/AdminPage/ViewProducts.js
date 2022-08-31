@@ -40,8 +40,12 @@ const ViewProducts = () => {
     }
 
     const handleClickEdit = (product) => {
-        setEditPage(!editPage);
+        handleEditPage();
         setProductToEdit(product);
+    }
+
+    const handleEditPage = () => {
+        setEditPage(!editPage);
     }
 
     const handleClickDelete = async (product) => {
@@ -50,8 +54,6 @@ const ViewProducts = () => {
         } else {
             return
         }
-
-
     }
 
     const handleClickEditClose = () => {
@@ -113,7 +115,7 @@ const ViewProducts = () => {
                 {displayProducts}
             </div>
 
-            {editPage ? <EditProduct product={productToEdit} handleClickEditClose={handleClickEditClose} /> : null}
+            {editPage ? <EditProduct product={productToEdit} handleEditPage={handleEditPage} handleClickEditClose={handleClickEditClose} /> : null}
 
         </div>
     )

@@ -14,8 +14,9 @@ const CartItem = ({ product, key, index, deleteCartItem }) => {
                 <p>{product.title}</p>
                 <p>stem length: {product.stemLength}</p>
                 <p>quantity: {product.quantity}</p>
+                <p>price: {product.price}</p>
             </div>
-            <p onClick={() => deleteCartItem(index)}> delete </p>
+            <p onClick={() => deleteCartItem(product)}> delete </p>
         </div>
     )
 }

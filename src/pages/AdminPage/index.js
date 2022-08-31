@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom'
 const AdminPage = () => {
     const { user, admin } = useContext(AuthContext);
     const [pageType, setPageType] = useState("ADD");
-    const [pageSelect, setPageSelect] = useState("")
+    const [pageSelect, setPageSelect] = useState("ADD")
 
     useEffect(() => {
         // const unsub = onSnapshot(collection(db, "flowers"), (flowers) => {

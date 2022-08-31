@@ -104,6 +104,7 @@ const AddProducts = () => {
             options,
             imgPath: snap.ref.fullPath
         });
+        
         await updateDoc(doc(db, section, docRef.id), {
             id: docRef.id,
         })
