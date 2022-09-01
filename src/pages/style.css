@@ -2,17 +2,17 @@
 
 .homepage-section-2 {
     display: flex;
+    flex-direction: row;
     width: 100%;
     margin: 0 auto;
     height: 500px;
     background-color: pink;
-    ;
+    max-width: 1400px;
 }
 
 .homepage-section-2 div {
     flex-grow: 1;
     width: 33%;
-
     background-color: white;
     margin: 1rem;
 }
@@ -28,4 +28,21 @@
     width: 100%;
     background-color: yellow;
     height: 300px;
+}
+
+@media only screen and (max-width: 500px) {
+    .homepage-section-2 {
+        flex-direction: column;
+        width: 100%;
+        /* padding-bottom: 1rem; */
+    }
+
+    .homepage-section-2 div {
+        /* flex-grow: 1; */
+        width: 100%;
+        background-color: white;
+        margin: 0 auto;
+        margin: 3rem 0 0 0;
+        text-align: center;
+    }
 }

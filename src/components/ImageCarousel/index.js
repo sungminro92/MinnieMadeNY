@@ -19,43 +19,43 @@ const ImageCarousel = () => {
     const mobileStyle = {
         textAlign: "center",
         maxWidth: "1000px",
-        maxHeight: "500px",
+        maxHeight: "350px",
         margin: "0px auto",
     }
 
     const laptopStyle = {
         textAlign: "center",
-        maxWidth: "1000px",
-        maxHeight: "500px",
-        margin: "40px auto",
+        maxHeight: "600px",
+        margin: "0 auto",
     }
+
+
 
     return (
         <div>
-            <div style={{ textAlign: "center" }}>
-                <div style={{
-                }}>
-                    <Carousel
-                        data={data}
-                        time={2000}
-                        width="100%"
-                        height="350px"
-                        radius="0px"
-                        slideNumber={false}
-                        slideNumberStyle={slideNumberStyle}
-                        automatic={true}
-                        dots={true}
-                        pauseIconColor="white"
-                        pauseIconSize="40px"
-                        slideBackgroundColor="white"
-                        slideImageFit="cover"
-                        thumbnails={false}
-                        thumbnailWidth="100px"
-                        style={width < 900 ? mobileStyle : laptopStyle}
-                    />
-                </div>
+            <div id="carousel-container" style={{ textAlign: "center", height: "100%" }} >
+                {/* <div style={{}}> */}
+                < Carousel
+                    data={data}
+                    time={2000}
+                    width="100%"
+                    height={width < 900 ? "350px" : "600px"}
+                    radius="0px"
+                    slideNumber={false}
+                    slideNumberStyle={slideNumberStyle}
+                    automatic={true}
+                    dots={true}
+                    pauseIconColor="white"
+                    pauseIconSize="40px"
+                    slideBackgroundColor="white"
+                    slideImageFit="cover"
+                    thumbnails={false}
+                    thumbnailWidth="100px"
+                    style={width < 900 ? mobileStyle : laptopStyle}
+                />
+                {/* </div> */}
             </div>
-        </div>
+        </div >
     );
 }
 
