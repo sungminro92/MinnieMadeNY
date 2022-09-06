@@ -1,0 +1,32 @@
+.reviewSlider {
+    width: 100%;
+
+}
+
+
+.review-slide {
+    margin: 1rem;
+    background-position: center;
+    background-size: cover;
+    width: 350px;
+    height: 350px;
+    background-color: white;
+}
+
+.review-slide img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    z-index: -2;
+}
+
+.shade {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.3);
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
