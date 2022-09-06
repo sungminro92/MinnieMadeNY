@@ -29,31 +29,28 @@ const ImageCarousel = () => {
         margin: "0 auto",
     }
 
-
-
     return (
         <div>
             <div id="carousel-container" style={{ textAlign: "center", height: "100%" }} >
-                {/* <div style={{}}> */}
-                < Carousel
+                <Carousel
                     data={data}
-                    time={2000}
+                    time={1800}
                     width="100%"
-                    height={width < 900 ? "350px" : "600px"}
+                    height={width < 900 ? "350px" : "500px"}
                     radius="0px"
                     slideNumber={false}
                     slideNumberStyle={slideNumberStyle}
                     automatic={true}
                     dots={true}
-                    pauseIconColor="white"
-                    pauseIconSize="40px"
+                    // pauseIconColor="white"
+                    // pauseIconSize="40px"
                     slideBackgroundColor="white"
                     slideImageFit="cover"
                     thumbnails={false}
                     thumbnailWidth="100px"
-                    style={width < 900 ? mobileStyle : laptopStyle}
+                // style={width < 900 ? mobileStyle : laptopStyle}
                 />
-                {/* </div> */}
+
             </div>
         </div >
     );

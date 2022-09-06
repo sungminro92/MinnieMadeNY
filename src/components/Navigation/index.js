@@ -78,7 +78,7 @@ const Navigation = ({ func }) => {
 
                     <div className="nav-container flex-container">
                         <a onClick={() => func({ type: "USER" })}><BiUserCircle size={30} /></a>
-                        <a onClick={() => func({ type: "CART" })}><BiCart size={30} /> {countItems}</a>
+                        <a onClick={() => func({ type: "CART" })}><BiCart size={30} /> {cartItems.length}</a>
                     </div>
                 </IconContext.Provider>
             </nav>

@@ -90,7 +90,7 @@ function App() {
     }
   } else {
     document.body.style.overflow = 'unset';
-    console.log("sidebarclosed")
+    // console.log("sidebarclosed")
   }
 
   // useEffect(() => {

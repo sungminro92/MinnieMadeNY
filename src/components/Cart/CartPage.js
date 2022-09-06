@@ -18,7 +18,7 @@ const CartPage = ({ func, show }) => {
     //     description: "something description",
     //     price: 10,
     // }])
-    console.log("cart items", cartItems)
+    // console.log("cart items", cartItems)
 
     const deleteCartItem = (product) => {
         dispatch({ type: "DELETE_FROM_CART", value: product })
